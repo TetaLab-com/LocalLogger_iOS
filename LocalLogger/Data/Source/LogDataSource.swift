@@ -70,7 +70,7 @@ class LogDataSource : ObservableObject {
     func inMessage(className: String, methodName: String, message: String) {
         addLog(Log(dateTime: getDate(),
                    message: message,
-                   level: Level.inMessage,
+                   level: .inMessage,
                    className: className,
                    methodName: methodName))
     }
@@ -82,7 +82,7 @@ class LogDataSource : ObservableObject {
     func outMessage(className: String, methodName: String, message: String) {
         addLog(Log(dateTime: getDate(),
                    message: message,
-                   level: Level.outMessage,
+                   level: .outMessage,
                    className: className,
                    methodName: methodName))
     }

@@ -23,8 +23,6 @@ class LogDatabase {
         
         return container
     }()
-    
-    private var sessionObserver: NSKeyValueObservation?
 
     public var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
