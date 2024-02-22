@@ -39,7 +39,7 @@ struct TabBarItemView: View {
             action(tabItem)
         } label: {
             VStack(spacing: 4) {
-                Image(tabItem.image)
+                Image(tabItem.image, bundle: .module)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()

@@ -88,7 +88,7 @@ struct MainHeaderView: View {
     private var shareButton: some View {
         if let shareItem {
             ShareLink(item: shareItem) {
-                Image("shareIcon")
+                Image("shareIcon", bundle: .module)
                     .resizable()
                     .renderingMode(.template)
                     .foregroundStyle(Color.white)

@@ -53,7 +53,7 @@ struct InformationView: View {
     }
     
     private var infoImage: some View {
-        Image("infoImage")
+        Image("infoImage", bundle: .module)
             .resizable()
             .scaledToFit()
             .frame(width: 160, height: 160)

@@ -23,7 +23,7 @@ struct SessionCellView: View {
             Spacer()
             
             ShareLink(item: session.logs.getShareString()) {
-                Image("shareIcon")
+                Image("shareIcon", bundle: .module)
                     .resizable()
                     .renderingMode(.template)
                     //.foregroundStyle(Color.purpleMain)
