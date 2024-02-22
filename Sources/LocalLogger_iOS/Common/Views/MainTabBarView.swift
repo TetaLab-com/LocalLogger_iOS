@@ -43,12 +43,12 @@ struct TabBarItemView: View {
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(isSelected ? Color.purpleButton : Color.purpleGray)
+//                    .foregroundColor(isSelected ? Color.purpleButton : Color.purpleGray)
                     .frame(width: 18, height: 18)
                 
                 Text(tabItem.title)
                     .font(.roboto500, size: 12)
-                    .foregroundColor(isSelected ? Color.purpleMain : Color.purpleGray)
+//                    .foregroundColor(isSelected ? Color.purpleMain : Color.purpleGray)
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity)
@@ -75,7 +75,7 @@ struct MainTabBarView: View {
         .padding(.top, 12)
         .background {
             Rectangle()
-                .foregroundStyle(Color.purpleBackground)
+                //.foregroundStyle(Color.purpleBackground)
                 .ignoresSafeArea()
                 .shadow(color: Color.black.opacity(0.06), radius: 30, x: 0, y: -12)
         }
@@ -98,7 +98,7 @@ struct MainTabBarView: View {
 
 #Preview {
     VStack(spacing: 0) {
-        Color.purpleMain
+        Color.red
         MainTabBarView()
         
     }

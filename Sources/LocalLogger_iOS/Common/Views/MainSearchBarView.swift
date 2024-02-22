@@ -24,7 +24,7 @@ struct MainSearchBarView: View {
         .padding(.horizontal)
         .background(
             RoundedRectangle(cornerRadius: 100)
-                .fill(Color.purpleSecondary)
+                //.fill(Color.purpleSecondary)
         )
         .onTapGesture {
             isFocused = true
@@ -42,7 +42,7 @@ struct MainSearchBarView: View {
         Image(systemName: "magnifyingglass")
             .frame(width: 24, height: 24)
             .fontWeight(.semibold)
-            .foregroundStyle(colorScheme == .light ? Color.purpleMain : Color.white )
+            //.foregroundStyle(colorScheme == .light ? Color.purpleMain : Color.white )
     }
     
     var xmark: some View {
@@ -53,7 +53,7 @@ struct MainSearchBarView: View {
             Image(systemName: "xmark")
                 .frame(width: 24, height: 24)
                 .fontWeight(.semibold)
-                .foregroundStyle(colorScheme == .light ? Color.purpleMain : Color.white )
+               // .foregroundStyle(colorScheme == .light ? Color.purpleMain : Color.white )
         }
     }
 }

@@ -24,7 +24,7 @@ struct LogsView: View {
             logsSection
             Spacer()
         }
-        .background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
+        //.background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
         .ignoresSafeArea(.container, edges: .top)
     }
     
