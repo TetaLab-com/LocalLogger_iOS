@@ -75,7 +75,7 @@ struct MainTabBarView: View {
         .padding(.top, 12)
         .background {
             Rectangle()
-                //.foregroundStyle(Color.purpleBackground)
+                .foregroundStyle(Color.purpleBackground)
                 .ignoresSafeArea()
                 .shadow(color: Color.black.opacity(0.06), radius: 30, x: 0, y: -12)
         }

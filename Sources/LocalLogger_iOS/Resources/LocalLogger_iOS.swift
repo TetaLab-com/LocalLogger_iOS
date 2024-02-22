@@ -11,21 +11,30 @@ public class LocalLogger {
         LogDatabase.shared.startSession()
     }
     
-    public static func present() {
+    public static func presentCurrentLogs() {
         guard let presentedVC = UIApplication.shared.keyWindowPresentedController else {
             print("[Error][LocalLogger] present: unable to find key window presented controller")
             return
         }
         
         presentedVC.presentSwiftUIView {
-            LogsHistoryView()
+            LogsView()
                 .environmentObject(viewModel)
                 .environmentObject(navigation)
         }
     }
     
-    public static func presentAllLogs() {
+    public static func presentLogs() {
+        guard let presentedVC = UIApplication.shared.keyWindowPresentedController else {
+            print("[Error][LocalLogger] present: unable to find key window presented controller")
+            return
+        }
         
+        presentedVC.presentSwiftUIView {
+            MainView()
+                .environmentObject(viewModel)
+                .environmentObject(navigation)
+        }
     }
     
     public static func w(
