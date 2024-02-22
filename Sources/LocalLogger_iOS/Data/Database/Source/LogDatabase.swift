@@ -14,7 +14,11 @@ class LogDatabase {
     private(set) var currentSession: SessionDB?
     
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "LogDB")
+        let bundle = Bundle.module
+        let modelURL = bundle.url(forResource: "LogDB", withExtension: ".xcdatamodeld")!
+        let model = NSManagedObjectModel(contentsOf: modelURL)!
+        let container = NSPersistentCloudKitContainer(name: "LogDB", managedObjectModel: model)
+        
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

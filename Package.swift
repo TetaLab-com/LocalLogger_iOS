@@ -20,7 +20,9 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "LocalLogger_iOS",
-            resources: [.process("Assets.xcassets")]
+            resources: [
+                .process("Assets.xcassets")
+            ]
         ),
         .testTarget(
             name: "LocalLogger_iOSTests",
