@@ -14,7 +14,7 @@ extension Color {
     )
     
     static let purpleBackground = Color(
-        "purpleBackground",
+        "PurpleBackground",
         bundle: Bundle.module
     )
 }
