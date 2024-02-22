@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "LocalLogger_iOS",
             resources: [
-                .copy("Resources/Assets.xcassets")
+                .process("Resources/Assets.xcassets")
             ]
         ),
         .testTarget(
