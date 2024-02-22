@@ -4,13 +4,13 @@
 import SwiftUI
 
 public class LocalLogger {
-    private let viewModel = LogsViewModel()
+    private static let viewModel = LogsViewModel()
     
-    public func startSession() {
+    public static func startSession() {
         LogDatabase.shared.startSession()
     }
     
-    public func present() {
+    public static func present() {
         guard let presentedVC = UIApplication.shared.keyWindowPresentedController else {
             print("[Error][LocalLogger] present: unable to find key window presented controller")
             return
@@ -22,11 +22,11 @@ public class LocalLogger {
         }
     }
     
-    public func presentAllLogs() {
+    public static func presentAllLogs() {
         
     }
     
-    public func w(
+    public static func w(
         className: String = "",
         methodName: String = "",
         message: String
@@ -38,7 +38,7 @@ public class LocalLogger {
         )
     }
 
-    public func i(
+    public static func i(
         className: String = "",
         methodName: String = "",
         message: String
@@ -50,7 +50,7 @@ public class LocalLogger {
         )
     }
     
-    public func e(
+    public static func e(
         className: String = "",
         methodName: String = "",
         message: String
@@ -62,7 +62,7 @@ public class LocalLogger {
         )
     }
     
-    public func inMessage(
+    public static func inMessage(
         className: String = "",
         methodName: String = "",
         message: String
@@ -74,7 +74,7 @@ public class LocalLogger {
         )
     }
     
-    public func outMessage(
+    public static func outMessage(
         className: String = "",
         methodName: String = "",
         message: String
