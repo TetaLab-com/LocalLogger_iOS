@@ -50,4 +50,14 @@ struct Log: Hashable {
     func toString() -> String {
         return "\(dateTime) \(level.getLevelPrefix()) \(getUserMessage())"
     }
+    
+    func searchableText() -> String {
+        dateTime.toString() + level.getLevelPrefix() + message
+    }
+}
+
+extension Array where Element == Log {
+    func filter(level: Level?, searchText: String) {
+        
+    }
 }

@@ -12,6 +12,10 @@ struct LocalLoggerApp: App {
     @StateObject var navigationManager = NavigationManager()
     @StateObject var viewModel = LogsViewModel()
     
+    init() {
+        LogDBManager.shared.startSession()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainView()

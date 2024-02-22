@@ -28,8 +28,9 @@ class LogDataSource : ObservableObject {
     private func addLog(_ log: Log) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            logs.insert(log, at: logs.count)
-            print("Log", "[${log.className}] [${log.methodName}] ${log.message}")
+            self.logs.append(log)
+            LogDBManager.shared.saveLog(log)
+            print("Log", "[\(log.className)] [\(log.methodName)] \(log.message)")
             //        notifyListUpdates()
         }
     }
