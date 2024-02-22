@@ -15,6 +15,7 @@ struct MainHeaderView: View {
     let showTrailingItems: Bool
     var showBackButton: Bool = false
     var level: Binding<Level?>? = nil
+    let shareItem: String?
     
     var body: some View {
         HStack(spacing: 12) {
@@ -22,8 +23,8 @@ struct MainHeaderView: View {
             title
             if showTrailingItems {
                 levelPicker
-                shareButton
             }
+            shareButton
         }
         .padding(.horizontal)
         .padding(.vertical, 20)
@@ -83,13 +84,16 @@ struct MainHeaderView: View {
 
     }
     
+    @ViewBuilder
     private var shareButton: some View {
-        ShareLink(item: "Share all logs") {
-            Image("shareIcon")
-                .resizable()
-                .renderingMode(.template)
-                .foregroundStyle(Color.white)
-                .frame(width: 24, height: 24)
+        if let shareItem {
+            ShareLink(item: shareItem) {
+                Image("shareIcon")
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundStyle(Color.white)
+                    .frame(width: 24, height: 24)
+            }
         }
     }
 }
@@ -99,7 +103,8 @@ struct MainHeaderView: View {
         MainHeaderView(
             titleText: "Logs",
             showTrailingItems: true,
-            level: .constant(.info)
+            level: .constant(.info),
+            shareItem: "Share item"
         )
         Spacer()
     }

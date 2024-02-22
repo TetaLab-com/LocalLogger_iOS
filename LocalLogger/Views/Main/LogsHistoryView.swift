@@ -16,7 +16,8 @@ struct LogsHistoryView: View {
         VStack(spacing: 0) {
             MainHeaderView(
                 titleText: "Logs History",
-                showTrailingItems: false
+                showTrailingItems: false,
+                shareItem: nil
             )
             
             logsSection

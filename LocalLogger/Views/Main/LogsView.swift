@@ -16,7 +16,8 @@ struct LogsView: View {
             MainHeaderView(
                 titleText: "Logs",
                 showTrailingItems: true,
-                level: $viewModel.selectedLevel
+                level: $viewModel.selectedLevel,
+                shareItem: viewModel.filteredLogs.getShareString()
             )
             MainSearchBarView(searchText: $viewModel.searchText)
                 .padding()

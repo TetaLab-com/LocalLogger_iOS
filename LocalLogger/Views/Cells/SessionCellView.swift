@@ -22,7 +22,7 @@ struct SessionCellView: View {
             
             Spacer()
             
-            ShareLink(item: "shared log info") {
+            ShareLink(item: session.logs.getShareString()) {
                 Image("shareIcon")
                     .resizable()
                     .renderingMode(.template)

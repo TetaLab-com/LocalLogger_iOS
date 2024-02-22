@@ -48,6 +48,11 @@ struct Log: Hashable, Codable {
 }
 
 extension Array where Element == Log {
+    func getShareString() -> String { self
+        .map { $0.getShareString() }
+        .joined(separator: "\n")
+    }
+    
     func filter(level: Level?, searchText: String) -> [Log] {
         if level == nil && searchText.isEmpty {
             return self
@@ -62,5 +67,14 @@ extension Array where Element == Log {
 
             return searchTextCondition && selectedLevelCondition
         }
+    }
+}
+
+extension Log {
+    func getShareString() -> String {
+        let date = dateTime.logDateFormat()
+        let log = level.getLevelPrefix() + message
+        
+        return date + " " + log
     }
 }
