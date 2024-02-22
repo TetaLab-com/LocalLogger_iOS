@@ -23,17 +23,23 @@ struct LogsHistoryView: View {
         }
         .background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
         .ignoresSafeArea(.container, edges: .top)
+        .safeAreaInset(edge: .bottom) {
+            Frame(height: 60)
+        }
     }
     
     private var logsSection: some View {
         ScrollView {
             VStack(spacing: 0) {
                 let sessions = viewModel.sessions.enumeratedArray()
-                ForEach(sessions, id: \.element.date) { index, session in
+                ForEach(sessions, id: \.element.id) { index, session in
                     Button {
                         navigation.appendHistoryPath(SessionLogsPath(session: session))
                     } label: {
-                        SessionCellView(session: session, index: index)
+                        SessionCellView(
+                            session: session.toSession(),
+                            index: index
+                        )
                     }
                 }
             }

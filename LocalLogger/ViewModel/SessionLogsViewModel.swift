@@ -18,18 +18,25 @@ class SessionLogsViewModel: ObservableObject {
     @Published private(set) var filteredLogs = [Log]()
     
     @Published private(set) var session: Session
+    @Published private(set) var sessionDB: SessionDB
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(session: Session) {
-        self.session = session
-        self.logs = session.logs
+    init(sessionDB: SessionDB) {
+        self.sessionDB = sessionDB
+        self.session = sessionDB.toSession()
+        self.logs = sessionDB
+            .getLogs()
+            .toLogs()
+        self.filteredLogs = self.logs
+        
         self.navigationTitle = session.date.sessionDateFormat()
         
         setupFilters()
+        setupLogs()
     }
     
-    public func setupFilters() {
+    private func setupFilters() {
         let textPublisher = $searchText
             .debounce(for: 0.15, scheduler: RunLoop.main)
             .removeDuplicates()
@@ -48,5 +55,13 @@ class SessionLogsViewModel: ObservableObject {
                 )
             }
             .store(in: &cancellables)
+    }
+    
+    private func setupLogs() {
+        sessionDB.observeLogs { [weak self] logs in
+            guard let self else { return }
+            
+            self.logs = logs.toLogs()
+        }
     }
 }

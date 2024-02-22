@@ -16,6 +16,8 @@ final class NavigationManager: ObservableObject {
     
     @Published var historyPath = NavigationPath()
     
+    public var showingTabbar: Bool { historyPath.isEmpty }
+    
     public func appendHistoryPath<T: Hashable>(_ path: T) {
         historyPath.append(path)
     }
@@ -25,14 +27,14 @@ final class NavigationManager: ObservableObject {
     }
 }
 
-struct SessionLogsPath: Codable, Hashable {
-    let session: Session
+struct SessionLogsPath: Hashable {
+    let session: SessionDB
 }
 
 extension View {
     func addNavigationPaths() -> some View { self
         .navigationDestination(for: SessionLogsPath.self) { session in
-            SessionLogsView(session: session.session)
+            SessionLogsView(sessionDB: session.session)
                 .toolbar(.hidden)
         }
     }

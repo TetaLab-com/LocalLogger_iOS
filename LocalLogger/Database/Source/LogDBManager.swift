@@ -11,7 +11,7 @@ import CoreData
 class LogDBManager {
     static let shared = LogDBManager()
     
-    private var currentSession: SessionDB?
+    private(set) var currentSession: SessionDB?
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "LogDB")
@@ -23,6 +23,8 @@ class LogDBManager {
         
         return container
     }()
+    
+    private var sessionObserver: NSKeyValueObservation?
 
     public var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext

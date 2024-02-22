@@ -15,15 +15,29 @@ extension Array where Element == SessionDB {
 }
 
 extension SessionDB {
+    static var logsObserver = [SessionDB: NSKeyValueObservation]()
+    
     func toSession() -> Session {
         Session(
             date: date ?? Date(),
-            logs: logs?.toArray(LogDB.self).toLogs() ?? []
+            logs: getLogs().toLogs()
         )
+    }
+    
+    func getLogs() -> [LogDB] {
+        let logs = logs ?? []
+        
+        return logs.toArray(LogDB.self)
+    }
+    
+    func observeLogs(onUpdate: @escaping ([LogDB]) -> ()) {
+        Self.logsObserver[self] = observe(\.logs) { session, _ in
+            onUpdate(session.getLogs())
+        }
     }
 }
 
-extension NSSet {
+extension NSOrderedSet {
     func toArray<T>(_ type: T.Type) -> [T] {
         map { $0 as! T }
     }

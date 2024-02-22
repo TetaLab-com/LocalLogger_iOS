@@ -31,8 +31,8 @@ struct MainView: View {
             MainTabBarView()
         }
         .ignoresSafeArea(.keyboard)
-        .onChange(of: navigationManager.selectedTab) {
-            guard navigationManager.selectedTab != .info else { return }
+        .onChange(of: navigationManager.selectedTab) { newTab in
+            guard newTab != .info else { return }
             navigationManager.previouslySelectedTab = navigationManager.selectedTab
         }
         .informationAlert($showInfoAlert)

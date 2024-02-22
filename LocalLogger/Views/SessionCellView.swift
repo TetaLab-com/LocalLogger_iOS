@@ -13,8 +13,12 @@ struct SessionCellView: View {
     
     var body: some View {
         HStack(spacing: 28) {
-            Text(session.date.sessionDateFormat())
-                .foregroundStyle(Color.primary)
+            Group {
+                Text(session.date.sessionDateFormat()) +
+                Text(" ") +
+                Text(session.logs.count.description)
+            }
+            .foregroundStyle(Color.primary)
             
             Spacer()
             

@@ -10,6 +10,6 @@
     </entity>
     <entity name="SessionDB" representedClassName="SessionDB" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="logs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LogDB" inverseName="session" inverseEntity="LogDB"/>
+        <relationship name="logs" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LogDB" inverseName="session" inverseEntity="LogDB"/>
     </entity>
 </model>

@@ -10,7 +10,7 @@ import SwiftUI
 
 class LogsViewModel : ObservableObject {
     @Published var logs = [Log]()
-    @Published var sessions = [Session]()
+    @Published var sessions = [SessionDB]()
     
     @Published var searchText = ""
     
@@ -29,9 +29,7 @@ class LogsViewModel : ObservableObject {
         logsManager.$logs
             .assign(to: &$logs)
         
-        sessions = LogDBManager.shared
-            .fetchSessions()
-            .toSessions()
+        sessions = LogDBManager.shared.fetchSessions()
     }
     
     public func copy() {

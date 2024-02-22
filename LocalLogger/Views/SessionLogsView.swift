@@ -10,8 +10,8 @@ import SwiftUI
 struct SessionLogsView: View {
     @StateObject private var viewModel: SessionLogsViewModel
     
-    init(session: Session) {
-        _viewModel = .init(wrappedValue: .init(session: session))
+    init(sessionDB: SessionDB) {
+        _viewModel = .init(wrappedValue: .init(sessionDB: sessionDB))
     }
     
     var body: some View {
@@ -21,6 +21,9 @@ struct SessionLogsView: View {
             logs
         }
         .padding(.top, -ScreenUtils.statusBarHeight)
+        .safeAreaInset(edge: .bottom) {
+            Frame(height: 60)
+        }
     }
     
     private var header: some View {
@@ -38,17 +41,6 @@ struct SessionLogsView: View {
     }
     
     private var logs: some View {
-        ScrollView {
-            let logs = viewModel.filteredLogs.enumeratedArray()
-            LazyVStack(spacing: 0) {
-                ForEach(logs, id: \.element.dateTime) { index, log in
-                    LogCellView(log: log, index: index)
-                }
-            }
-        }
+        LogsSectionView(logs: viewModel.filteredLogs)
     }
-}
-
-#Preview {
-    SessionLogsView(session: .init(date: Date(), logs: []))
 }

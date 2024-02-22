@@ -11,6 +11,7 @@ import SwiftUI
 class LogDataSource : ObservableObject {
     static let shared = LogDataSource()
     let dateFormatter = DateFormatter()
+    let timer = TimerHelper()
     
     @Published public var logs = [Log]()
     
@@ -18,11 +19,15 @@ class LogDataSource : ObservableObject {
         dateFormatter.dateFormat = "mm:ss.SSSS"
         dateFormatter.locale = Locale(identifier: "en_US")
         
-        w("message1")
-        i("message2")
-        e("message3")
-        inMessage("message4")
-        outMessage("message5")
+        timer.startTimer(withInterval: 2) { [weak self] in
+            guard let self else { return }
+            
+            self.w("message1")
+            self.i("message2")
+            self.e("message3")
+            self.inMessage("message4")
+            self.outMessage("message5")
+        }
     }
     
     private func addLog(_ log: Log) {

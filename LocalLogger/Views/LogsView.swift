@@ -28,15 +28,7 @@ struct LogsView: View {
     }
     
     private var logsSection: some View {
-        ScrollView {
-            LazyVStack(spacing: 0) {
-                let logs = viewModel.filteredLogs.enumeratedArray()
-                
-                ForEach(logs, id: \.element.dateTime) { index, log in
-                    LogCellView(log: log, index: index)
-                }
-            }
-        }
+        LogsSectionView(logs: viewModel.filteredLogs)
     }
 }
 
