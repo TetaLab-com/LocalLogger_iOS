@@ -15,7 +15,7 @@ struct LogCellView: View {
     
     var body: some View {
         HStack {
-            Text(log.dateTime.toString())
+            Text(log.dateTime.logDateFormat())
                 .foregroundStyle(colorScheme == .light ? Color.textGray : Color.white)
             
             Spacer(minLength: 0)

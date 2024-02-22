@@ -58,13 +58,13 @@ struct MainHeaderView: View {
             Divider()
 
             ForEach(Level.allCases, id: \.self) { level in
+                let currentLevel = self.level?.wrappedValue
+                let isSelected = currentLevel == level
+                
                 Button {
                     self.level?.wrappedValue = level
                 } label: {
-                    Label(
-                        level.rawValue,
-                        systemImage: self.level?.wrappedValue == level ? "checkmark" : ""
-                    )
+                    Label(level.rawValue, systemImage: isSelected ? "checkmark" : "")
                 }
             }
         } label: {

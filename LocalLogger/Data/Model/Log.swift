@@ -43,7 +43,7 @@ struct Log: Hashable, Codable {
     }
     
     func searchableText() -> String {
-        dateTime.toString() + level.getLevelPrefix() + message
+        dateTime.logDateFormat() + level.getLevelPrefix() + message
     }
 }
 

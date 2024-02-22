@@ -18,7 +18,6 @@
 		442B2FD02B876965004BE989 /* LogCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FCF2B876965004BE989 /* LogCellView.swift */; };
 		442B2FD22B876F73004BE989 /* SessionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FD12B876F73004BE989 /* SessionCellView.swift */; };
 		442B2FD42B8775F2004BE989 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FD32B8775F2004BE989 /* BackButtonView.swift */; };
-		442B2FD62B877FBE004BE989 /* TimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FD52B877FBE004BE989 /* TimerHelper.swift */; };
 		442B2FD82B878079004BE989 /* LogsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FD72B878079004BE989 /* LogsSectionView.swift */; };
 		442B2FDA2B87883B004BE989 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FD92B87883B004BE989 /* Frame.swift */; };
 		9CB2F0482B3DF09F00FAA215 /* LocalLoggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2F0472B3DF09F00FAA215 /* LocalLoggerApp.swift */; };
@@ -60,7 +59,6 @@
 		442B2FCF2B876965004BE989 /* LogCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCellView.swift; sourceTree = "<group>"; };
 		442B2FD12B876F73004BE989 /* SessionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellView.swift; sourceTree = "<group>"; };
 		442B2FD32B8775F2004BE989 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
-		442B2FD52B877FBE004BE989 /* TimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHelper.swift; sourceTree = "<group>"; };
 		442B2FD72B878079004BE989 /* LogsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsSectionView.swift; sourceTree = "<group>"; };
 		442B2FD92B87883B004BE989 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		9CB2F0442B3DF09F00FAA215 /* LocalLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,7 +236,6 @@
 			children = (
 				B67644EE2B48643A001CBDDC /* Fonts */,
 				B67644ED2B4861B3001CBDDC /* Views */,
-				442B2FD52B877FBE004BE989 /* TimerHelper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -419,7 +416,6 @@
 				B6A1BC0F2B48B6220013978D /* MainView.swift in Sources */,
 				442B2FD22B876F73004BE989 /* SessionCellView.swift in Sources */,
 				B6A1BC182B4C36EE0013978D /* InfoAlertViewModifier.swift in Sources */,
-				442B2FD62B877FBE004BE989 /* TimerHelper.swift in Sources */,
 				442B2FC72B876464004BE989 /* Session.swift in Sources */,
 				442B2FCC2B8768DD004BE989 /* SessionLogsView.swift in Sources */,
 				442B2FC02B874C24004BE989 /* LogDB.swift in Sources */,
