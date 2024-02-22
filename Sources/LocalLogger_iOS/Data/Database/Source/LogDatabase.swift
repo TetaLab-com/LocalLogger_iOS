@@ -15,7 +15,7 @@ class LogDatabase {
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let bundle = Bundle.module
-        let modelURL = bundle.url(forResource: "LogDB", withExtension: ".xcdatamodeld")!
+        let modelURL = bundle.url(forResource: "LogDB", withExtension: ".momd")!
         let model = NSManagedObjectModel(contentsOf: modelURL)!
         let container = NSPersistentCloudKitContainer(name: "LogDB", managedObjectModel: model)
         
