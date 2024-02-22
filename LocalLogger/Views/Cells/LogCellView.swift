@@ -36,7 +36,7 @@ struct LogCellView: View {
         log: Log(
             dateTime: Date(),
             message: "Hello",
-            level: .ERROR,
+            level: .error,
             className: "Hello",
             methodName: "World"
         ),

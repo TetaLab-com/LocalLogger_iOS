@@ -1,5 +1,5 @@
 //
-//  LogDBManager.swift
+//  LogDatabase.swift
 //  LocalLogger
 //
 //  Created by Ruslan Duda on 22.02.2024.
@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 
-class LogDBManager {
-    static let shared = LogDBManager()
+class LogDatabase {
+    static let shared = LogDatabase()
     
     private(set) var currentSession: SessionDB?
     
@@ -39,7 +39,7 @@ class LogDBManager {
     
     public func saveLog(_ log: Log) {
         guard let currentSession else {
-            print("[Info][LogDBManager] tried to save log, but session isn't started")
+            print("[Info][LogDatabase] tried to save log, but session isn't started")
             return
         }
         
@@ -51,7 +51,7 @@ class LogDBManager {
     
     public func saveLogs(_ logs: [Log]) {
         guard let currentSession else {
-            print("[Info][LogDBManager] tried to save logs, but session isn't started")
+            print("[Info][LogDatabase] tried to save logs, but session isn't started")
             return
         }
         
@@ -69,7 +69,7 @@ class LogDBManager {
             let items = try viewContext.fetch(request)
             return items
         } catch {
-            print("[Error][LogDBManager] fetchLogs: \(error)")
+            print("[Error][LogDatabase] fetchLogs: \(error)")
             return []
         }
     }
@@ -82,37 +82,12 @@ class LogDBManager {
             let items = try viewContext.fetch(request)
             return items
         } catch {
-            print("[Error][LogDBManager] fetchSessions: \(error)")
+            print("[Error][LogDatabase] fetchSessions: \(error)")
             return []
-        }
-    }
-    
-    public func fetchLogs(for session: SessionDB) -> [LogDB] {
-        let request = LogDB.fetchRequest()
-        request.predicate = NSPredicate(format: "session = %@", session)
-        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
-        do {
-            let fetchedLogs = try viewContext.fetch(request)
-            return fetchedLogs
-        } catch {
-            print("[Error][LogDBManager] fetchLogs: \(error)")
-            return []
-        }
-    }
-    
-    public func resetDB() {
-        let request: NSFetchRequest<NSFetchRequestResult> = SessionDB.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-        
-        do {
-            try viewContext.execute(deleteRequest)
-        } catch {
-            print("[Error][LogDBManager] resetDB: \(error)")
         }
     }
 
-    public func saveContext() {
+    private func saveContext() {
         guard viewContext.hasChanges else {
             return
         }

@@ -13,8 +13,8 @@ struct LocalLoggerApp: App {
     @StateObject var viewModel = LogsViewModel()
     
     init() {
-        //LogDBManager.shared.resetDB()
-        LogDBManager.shared.startSession()
+        //LogDatabase.shared.resetDB()
+        LogDatabase.shared.startSession()
     }
     
     var body: some Scene {

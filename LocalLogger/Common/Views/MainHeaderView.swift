@@ -99,7 +99,7 @@ struct MainHeaderView: View {
         MainHeaderView(
             titleText: "Logs",
             showTrailingItems: true,
-            level: .constant(.INFO)
+            level: .constant(.info)
         )
         Spacer()
     }

@@ -19,7 +19,7 @@ extension Log {
     @discardableResult
     func toLogDB() -> LogDB {
         LogDB(
-            context: LogDBManager.shared.viewContext,
+            context: LogDatabase.shared.viewContext,
             log: self
         )
     }

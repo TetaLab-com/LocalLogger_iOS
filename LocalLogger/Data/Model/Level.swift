@@ -8,31 +8,30 @@
 import Foundation
 import SwiftUI
 
-enum Level: String, CaseIterable, Codable {
-    case INFO = "Info"
-    case WARNING = "Warning"
-    case ERROR = "Error"
-    case IN_MESSAGE = "IN"//used for messages received at Mobile phone
-    case OUT_MESSAGE = "OUT"//used for messages sent from Mobile phone
-    ;
+enum Level: String, CaseIterable, Codable, Hashable {
+    case info = "Info"
+    case warning = "Warning"
+    case error = "Error"
+    case inMessage = "IN"//used for messages received at Mobile phone
+    case outMessage = "OUT"//used for messages sent from Mobile phone
 
     func getLevelPrefix() -> String {
         switch self {
-        case .INFO: return "I: "
-        case .WARNING: return "D: "
-        case .ERROR: return "E: "
-        case .IN_MESSAGE: return "<--: "
-        case .OUT_MESSAGE: return "-->: "
+        case .info: return "I: "
+        case .warning: return "D: "
+        case .error: return "E: "
+        case .inMessage: return "<--: "
+        case .outMessage: return "-->: "
         }
     }
     
     func getColor() -> Color {
         switch self {
-        case .INFO: return Color.infoMessage
-        case .WARNING: return Color.warningMessage
-        case .ERROR: return Color.errorMessage
-        case .IN_MESSAGE: return Color.inMessage
-        case .OUT_MESSAGE: return Color.outMessage
+        case .info: return .infoMessage
+        case .warning: return .warningMessage
+        case .error: return .errorMessage
+        case .inMessage: return .inMessage
+        case .outMessage: return .outMessage
         }        
     }
 }

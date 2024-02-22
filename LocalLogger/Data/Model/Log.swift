@@ -8,18 +8,9 @@
 import Foundation
 
 struct Log: Hashable, Codable {
-    
-    static func == (lhs: Log, rhs: Log) -> Bool {
-        return lhs.dateTime == rhs.dateTime
-        && lhs.message == rhs.message
-        && lhs.level == rhs.level
-        && lhs.className == rhs.className
-        && lhs.methodName == rhs.methodName
-    }
-    
     var dateTime: Date
     var message: String
-    var level: Level = Level.WARNING
+    var level: Level = .warning
     var className: String = ""
     var methodName: String = ""
     

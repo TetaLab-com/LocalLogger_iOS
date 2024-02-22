@@ -29,7 +29,7 @@ class LogsViewModel : ObservableObject {
         logsManager.$logs
             .assign(to: &$logs)
         
-        sessions = LogDBManager.shared.fetchSessions()
+        sessions = LogDatabase.shared.fetchSessions()
     }
     
     public func copy() {

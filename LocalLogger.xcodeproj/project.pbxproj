@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		442B2FBD2B874ACA004BE989 /* LogDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FBB2B874ACA004BE989 /* LogDB.xcdatamodeld */; };
 		442B2FC02B874C24004BE989 /* LogDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FBF2B874C24004BE989 /* LogDB.swift */; };
-		442B2FC32B874C8B004BE989 /* LogDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC22B874C8B004BE989 /* LogDBManager.swift */; };
+		442B2FC32B874C8B004BE989 /* LogDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC22B874C8B004BE989 /* LogDatabase.swift */; };
 		442B2FC52B875834004BE989 /* SessionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC42B875834004BE989 /* SessionDB.swift */; };
 		442B2FC72B876464004BE989 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC62B876464004BE989 /* Session.swift */; };
 		442B2FCA2B8765DB004BE989 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 442B2FC92B8765DB004BE989 /* OrderedCollections */; };
@@ -52,7 +52,7 @@
 /* Begin PBXFileReference section */
 		442B2FBC2B874ACA004BE989 /* LogDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LogDB.xcdatamodel; sourceTree = "<group>"; };
 		442B2FBF2B874C24004BE989 /* LogDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDB.swift; sourceTree = "<group>"; };
-		442B2FC22B874C8B004BE989 /* LogDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDBManager.swift; sourceTree = "<group>"; };
+		442B2FC22B874C8B004BE989 /* LogDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDatabase.swift; sourceTree = "<group>"; };
 		442B2FC42B875834004BE989 /* SessionDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDB.swift; sourceTree = "<group>"; };
 		442B2FC62B876464004BE989 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		442B2FCB2B8768DD004BE989 /* SessionLogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogsView.swift; sourceTree = "<group>"; };
@@ -109,27 +109,49 @@
 			isa = PBXGroup;
 			children = (
 				442B2FC12B874C7F004BE989 /* Source */,
-				442B2FBE2B874C1C004BE989 /* Model */,
+				442B2FBE2B874C1C004BE989 /* Extensions */,
 				442B2FBB2B874ACA004BE989 /* LogDB.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";
 		};
-		442B2FBE2B874C1C004BE989 /* Model */ = {
+		442B2FBE2B874C1C004BE989 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				442B2FBF2B874C24004BE989 /* LogDB.swift */,
 				442B2FC42B875834004BE989 /* SessionDB.swift */,
 			);
-			path = Model;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		442B2FC12B874C7F004BE989 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				442B2FC22B874C8B004BE989 /* LogDBManager.swift */,
+				442B2FC22B874C8B004BE989 /* LogDatabase.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		442B2FDB2B8793D2004BE989 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				442B2FD72B878079004BE989 /* LogsSectionView.swift */,
+				442B2FCF2B876965004BE989 /* LogCellView.swift */,
+				442B2FD12B876F73004BE989 /* SessionCellView.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		442B2FDC2B8793DE004BE989 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B6A1BC0E2B48B6210013978D /* MainView.swift */,
+				B67645042B48820E001CBDDC /* LogsView.swift */,
+				B6A1BC102B4A173F0013978D /* LogsHistoryView.swift */,
+				B6A1BC142B4A1D590013978D /* InformationView.swift */,
+				442B2FCB2B8768DD004BE989 /* SessionLogsView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		9CB2F03B2B3DF09F00FAA215 = {
@@ -151,7 +173,6 @@
 		9CB2F0462B3DF09F00FAA215 /* LocalLogger */ = {
 			isa = PBXGroup;
 			children = (
-				442B2FBA2B874920004BE989 /* Database */,
 				B6A1BC162B4C36D50013978D /* Modifiers */,
 				B6A1BC0D2B48B5F60013978D /* Managers */,
 				B67645032B487E70001CBDDC /* Views */,
@@ -178,6 +199,7 @@
 		9CB2F0552B3DF11C00FAA215 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				442B2FBA2B874920004BE989 /* Database */,
 				9CB2F05B2B3DF1D200FAA215 /* Source */,
 				9CB2F05A2B3DF1C700FAA215 /* Model */,
 			);
@@ -224,6 +246,7 @@
 		B67644ED2B4861B3001CBDDC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				442B2FD32B8775F2004BE989 /* BackButtonView.swift */,
 				B67644EB2B4861B0001CBDDC /* MainHeaderView.swift */,
 				B6A1BC052B48A02E0013978D /* MainSearchBarView.swift */,
 				B6A1BC072B48AC210013978D /* MainTabBarView.swift */,
@@ -267,15 +290,8 @@
 		B67645032B487E70001CBDDC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B6A1BC0E2B48B6210013978D /* MainView.swift */,
-				B67645042B48820E001CBDDC /* LogsView.swift */,
-				B6A1BC102B4A173F0013978D /* LogsHistoryView.swift */,
-				B6A1BC142B4A1D590013978D /* InformationView.swift */,
-				442B2FCB2B8768DD004BE989 /* SessionLogsView.swift */,
-				442B2FCF2B876965004BE989 /* LogCellView.swift */,
-				442B2FD12B876F73004BE989 /* SessionCellView.swift */,
-				442B2FD32B8775F2004BE989 /* BackButtonView.swift */,
-				442B2FD72B878079004BE989 /* LogsSectionView.swift */,
+				442B2FDC2B8793DE004BE989 /* Main */,
+				442B2FDB2B8793D2004BE989 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -408,7 +424,7 @@
 				442B2FCC2B8768DD004BE989 /* SessionLogsView.swift in Sources */,
 				442B2FC02B874C24004BE989 /* LogDB.swift in Sources */,
 				B6A1BC0A2B48B3E40013978D /* ViewExtension.swift in Sources */,
-				442B2FC32B874C8B004BE989 /* LogDBManager.swift in Sources */,
+				442B2FC32B874C8B004BE989 /* LogDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
