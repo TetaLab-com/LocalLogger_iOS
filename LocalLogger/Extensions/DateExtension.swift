@@ -8,6 +8,14 @@
 import Foundation
 
 extension Date {
+    func sessionDateFormat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        return dateFormatter.string(from: self)
+    }
+    
     func toString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm:ss.SSSS"

@@ -13,7 +13,11 @@ struct LogsHistoryView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            MainHeaderView(titleText: "Logs History", showTrailingItems: false)
+            MainHeaderView(
+                titleText: "Logs History",
+                showTrailingItems: false
+            )
+            
             logsSection
         }
         .background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
@@ -23,8 +27,27 @@ struct LogsHistoryView: View {
     private var logsSection: some View {
         ScrollView {
             VStack(spacing: 0) {
-                ForEach(viewModel.logs.indices, id: \.self) { index in
-                    logItemView(index: index)
+                let sessions = viewModel.sessions.enumeratedArray()
+                ForEach(sessions, id: \.element.date) { offset, session in
+                    HStack(spacing: 28) {
+                        Text(session.date.sessionDateFormat())
+                            .foregroundStyle(Color.primary)
+                        
+                        Spacer()
+                        
+                        ShareLink(item: "shared log info") {
+                            Image("shareIcon")
+                                .resizable()
+                                .renderingMode(.template)
+                                .foregroundStyle(Color.purpleMain)
+                                .frame(width: 24, height: 24)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(10)
+                    .padding(.horizontal, 20)
+                    .background(offset % 2 == 0 ? Color.purpleBackground : Color.purpleSecondary)
+                    .font(.roboto400, size: 20)
                 }
             }
         }
@@ -61,4 +84,10 @@ struct LogsHistoryView: View {
 #Preview {
     LogsHistoryView()
         .environmentObject(LogsViewModel())
+}
+
+extension Sequence {
+    func enumeratedArray() -> [(offset: Int, element: Element)] {
+        Array(self.enumerated())
+    }
 }

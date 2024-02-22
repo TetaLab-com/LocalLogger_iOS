@@ -45,8 +45,6 @@ class LogDBManager {
         currentSession.addToLogs(log)
         
         saveContext()
-        
-        print(fetchSessions())
     }
     
     public func saveLogs(_ logs: [Log]) {
@@ -107,7 +105,7 @@ class LogDBManager {
         
         do {
             try viewContext.execute(deleteRequest)
-        } catch let error {
+        } catch {
             print("[Error][LogDBManager] resetDB: \(error)")
         }
     }
