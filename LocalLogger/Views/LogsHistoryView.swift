@@ -10,6 +10,7 @@ import SwiftUI
 struct LogsHistoryView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var viewModel: LogsViewModel
+    @EnvironmentObject var navigation: NavigationManager
     
     var body: some View {
         VStack(spacing: 0) {
@@ -28,56 +29,15 @@ struct LogsHistoryView: View {
         ScrollView {
             VStack(spacing: 0) {
                 let sessions = viewModel.sessions.enumeratedArray()
-                ForEach(sessions, id: \.element.date) { offset, session in
-                    HStack(spacing: 28) {
-                        Text(session.date.sessionDateFormat())
-                            .foregroundStyle(Color.primary)
-                        
-                        Spacer()
-                        
-                        ShareLink(item: "shared log info") {
-                            Image("shareIcon")
-                                .resizable()
-                                .renderingMode(.template)
-                                .foregroundStyle(Color.purpleMain)
-                                .frame(width: 24, height: 24)
-                        }
+                ForEach(sessions, id: \.element.date) { index, session in
+                    Button {
+                        navigation.appendHistoryPath(SessionLogsPath(session: session))
+                    } label: {
+                        SessionCellView(session: session, index: index)
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding(10)
-                    .padding(.horizontal, 20)
-                    .background(offset % 2 == 0 ? Color.purpleBackground : Color.purpleSecondary)
-                    .font(.roboto400, size: 20)
                 }
             }
         }
-    }
-    
-    @ViewBuilder
-    private func logItemView(index: Int) -> some View {
-        let log = viewModel.logs[index]
-        HStack(spacing: 28) {
-            Text(log.dateTime.toStringDate())
-                .foregroundStyle(Color.primary)
-                        
-            Text(log.dateTime.toStringTime())
-                .foregroundStyle(Color.primary)
-            
-            Spacer()
-            
-            ShareLink(item: "shared log info") {
-                Image("shareIcon")
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundStyle(Color.purpleMain)
-                    .frame(width: 24, height: 24)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(10)
-        .padding(.horizontal, 20)
-        .background(index % 2 == 0 ? Color.purpleBackground : Color.purpleSecondary)
-        .font(.roboto400, size: 20)
     }
 }
 

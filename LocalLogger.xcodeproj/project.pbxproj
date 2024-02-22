@@ -13,6 +13,11 @@
 		442B2FC52B875834004BE989 /* SessionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC42B875834004BE989 /* SessionDB.swift */; };
 		442B2FC72B876464004BE989 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC62B876464004BE989 /* Session.swift */; };
 		442B2FCA2B8765DB004BE989 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 442B2FC92B8765DB004BE989 /* OrderedCollections */; };
+		442B2FCC2B8768DD004BE989 /* SessionLogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FCB2B8768DD004BE989 /* SessionLogsView.swift */; };
+		442B2FCE2B8768F1004BE989 /* SessionLogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FCD2B8768F1004BE989 /* SessionLogsViewModel.swift */; };
+		442B2FD02B876965004BE989 /* LogCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FCF2B876965004BE989 /* LogCellView.swift */; };
+		442B2FD22B876F73004BE989 /* SessionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FD12B876F73004BE989 /* SessionCellView.swift */; };
+		442B2FD42B8775F2004BE989 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FD32B8775F2004BE989 /* BackButtonView.swift */; };
 		9CB2F0482B3DF09F00FAA215 /* LocalLoggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2F0472B3DF09F00FAA215 /* LocalLoggerApp.swift */; };
 		9CB2F04C2B3DF0A000FAA215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CB2F04B2B3DF0A000FAA215 /* Assets.xcassets */; };
 		9CB2F04F2B3DF0A000FAA215 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CB2F04E2B3DF0A000FAA215 /* Preview Assets.xcassets */; };
@@ -47,6 +52,11 @@
 		442B2FC22B874C8B004BE989 /* LogDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDBManager.swift; sourceTree = "<group>"; };
 		442B2FC42B875834004BE989 /* SessionDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDB.swift; sourceTree = "<group>"; };
 		442B2FC62B876464004BE989 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		442B2FCB2B8768DD004BE989 /* SessionLogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogsView.swift; sourceTree = "<group>"; };
+		442B2FCD2B8768F1004BE989 /* SessionLogsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogsViewModel.swift; sourceTree = "<group>"; };
+		442B2FCF2B876965004BE989 /* LogCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCellView.swift; sourceTree = "<group>"; };
+		442B2FD12B876F73004BE989 /* SessionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCellView.swift; sourceTree = "<group>"; };
+		442B2FD32B8775F2004BE989 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		9CB2F0442B3DF09F00FAA215 /* LocalLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB2F0472B3DF09F00FAA215 /* LocalLoggerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoggerApp.swift; sourceTree = "<group>"; };
 		9CB2F04B2B3DF0A000FAA215 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				9CB2F05F2B3DF89200FAA215 /* LogsViewModel.swift */,
+				442B2FCD2B8768F1004BE989 /* SessionLogsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -252,6 +263,10 @@
 				B67645042B48820E001CBDDC /* LogsView.swift */,
 				B6A1BC102B4A173F0013978D /* LogsHistoryView.swift */,
 				B6A1BC142B4A1D590013978D /* InformationView.swift */,
+				442B2FCB2B8768DD004BE989 /* SessionLogsView.swift */,
+				442B2FCF2B876965004BE989 /* LogCellView.swift */,
+				442B2FD12B876F73004BE989 /* SessionCellView.swift */,
+				442B2FD32B8775F2004BE989 /* BackButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +375,8 @@
 				B6A1BC112B4A173F0013978D /* LogsHistoryView.swift in Sources */,
 				B67644EC2B4861B0001CBDDC /* MainHeaderView.swift in Sources */,
 				442B2FBD2B874ACA004BE989 /* LogDB.xcdatamodeld in Sources */,
+				442B2FCE2B8768F1004BE989 /* SessionLogsViewModel.swift in Sources */,
+				442B2FD02B876965004BE989 /* LogCellView.swift in Sources */,
 				B67645052B48820E001CBDDC /* LogsView.swift in Sources */,
 				9CB2F0592B3DF16900FAA215 /* Log.swift in Sources */,
 				442B2FC52B875834004BE989 /* SessionDB.swift in Sources */,
@@ -367,13 +384,16 @@
 				B6A1BC082B48AC210013978D /* MainTabBarView.swift in Sources */,
 				B67644F02B48644C001CBDDC /* CustomFont.swift in Sources */,
 				B6A1BC0C2B48B41C0013978D /* NavigationManager.swift in Sources */,
+				442B2FD42B8775F2004BE989 /* BackButtonView.swift in Sources */,
 				B67645022B487D6E001CBDDC /* UIApplicationExtension.swift in Sources */,
 				9CB2F05D2B3DF1E200FAA215 /* Level.swift in Sources */,
 				9CB2F0482B3DF09F00FAA215 /* LocalLoggerApp.swift in Sources */,
 				B6A1BC152B4A1D590013978D /* InformationView.swift in Sources */,
 				B6A1BC0F2B48B6220013978D /* MainView.swift in Sources */,
+				442B2FD22B876F73004BE989 /* SessionCellView.swift in Sources */,
 				B6A1BC182B4C36EE0013978D /* InfoAlertViewModifier.swift in Sources */,
 				442B2FC72B876464004BE989 /* Session.swift in Sources */,
+				442B2FCC2B8768DD004BE989 /* SessionLogsView.swift in Sources */,
 				442B2FC02B874C24004BE989 /* LogDB.swift in Sources */,
 				B6A1BC0A2B48B3E40013978D /* ViewExtension.swift in Sources */,
 				442B2FC32B874C8B004BE989 /* LogDBManager.swift in Sources */,

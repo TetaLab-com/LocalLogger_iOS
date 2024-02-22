@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Level: String, CaseIterable {
+enum Level: String, CaseIterable, Codable {
     case INFO = "Info"
     case WARNING = "Warning"
     case ERROR = "Error"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Session: Hashable, Equatable {
+struct Session: Hashable, Equatable, Codable {
     let date: Date
     var logs: [Log]
 }

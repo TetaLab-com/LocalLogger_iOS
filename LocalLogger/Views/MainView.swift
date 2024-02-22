@@ -19,7 +19,9 @@ struct MainView: View {
             case .home:
                 LogsView()
             case .history:
-                LogsHistoryView()
+                NavigationStack(path: $navigationManager.historyPath) {
+                    LogsHistoryView().addNavigationPaths()
+                }
             case .info:
                 previouslySelectedView
             }

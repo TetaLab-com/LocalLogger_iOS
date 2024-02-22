@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Log: Hashable {
+struct Log: Hashable, Codable {
     
     static func == (lhs: Log, rhs: Log) -> Bool {
         return lhs.dateTime == rhs.dateTime
@@ -57,7 +57,19 @@ struct Log: Hashable {
 }
 
 extension Array where Element == Log {
-    func filter(level: Level?, searchText: String) {
+    func filter(level: Level?, searchText: String) -> [Log] {
+        if level == nil && searchText.isEmpty {
+            return self
+        }
         
+        return filter { log in
+            let logSearchable = log.searchableText()
+            
+            // Фільтрація за текстом пошуку та вибраним рівнем
+            let searchTextCondition = searchText.isEmpty || logSearchable.contains(searchText)
+            let selectedLevelCondition = level == nil || log.level == level
+
+            return searchTextCondition && selectedLevelCondition
+        }
     }
 }

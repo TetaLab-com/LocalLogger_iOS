@@ -83,6 +83,10 @@ struct MainTabBarView: View {
     }
     
     private func tabTapAction(_ tab: TabItem) {
+        if tab == .history && navigationManager.selectedTab == .history {
+            navigationManager.clearHistoryPath()
+        }
+        
         navigationManager.selectedTab = tab
     }
 }

@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct MainHeaderView: View {
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @EnvironmentObject var viewModel: LogsViewModel
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     
     let titleText: String
     let showTrailingItems: Bool
+    var showBackButton: Bool = false
+    var level: Binding<Level?>? = nil
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 12) {
+            backButton
             title
             if showTrailingItems {
                 levelPicker
@@ -29,6 +32,14 @@ struct MainHeaderView: View {
         .frame(height: 120)
     }
     
+    @ViewBuilder
+    private var backButton: some View {
+        if showBackButton {
+            BackButton(action: dismiss.callAsFunction)
+                .foregroundStyle(Color.white)
+        }
+    }
+    
     private var title: some View {
         Text(titleText)
             .foregroundStyle(Color.white)
@@ -38,24 +49,27 @@ struct MainHeaderView: View {
     
     private var levelPicker: some View {
         Menu {
-            Button(action: {
-                viewModel.selectedLevel = nil
-            }) {
-                Label("All", systemImage: viewModel.selectedLevel == nil ? "checkmark" : "")
+            Button {
+                level?.wrappedValue = nil
+            } label: {
+                Label("All", systemImage: level?.wrappedValue == nil ? "checkmark" : "")
             }
             
             Divider()
 
             ForEach(Level.allCases, id: \.self) { level in
-                Button(action: {
-                    viewModel.selectedLevel = level
-                }) {
-                    Label(level.rawValue, systemImage: viewModel.selectedLevel == level ? "checkmark" : "")
+                Button {
+                    self.level?.wrappedValue = level
+                } label: {
+                    Label(
+                        level.rawValue,
+                        systemImage: self.level?.wrappedValue == level ? "checkmark" : ""
+                    )
                 }
             }
         } label: {
             HStack {
-                Text(viewModel.selectedLevel?.rawValue ?? "All")
+                Text(level?.wrappedValue?.rawValue ?? "All")
                 Image(systemName: "triangle.fill")
                     .resizable()
                     .scaledToFit()
@@ -82,7 +96,11 @@ struct MainHeaderView: View {
 
 #Preview {
     VStack {
-        MainHeaderView(titleText: "Logs", showTrailingItems: true)
+        MainHeaderView(
+            titleText: "Logs",
+            showTrailingItems: true,
+            level: .constant(.INFO)
+        )
         Spacer()
     }
     .ignoresSafeArea(.container, edges: .top)
