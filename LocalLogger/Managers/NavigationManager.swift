@@ -11,6 +11,7 @@ import SwiftUI
 final class NavigationManager: ObservableObject {
     @Published var tabBarSize = CGSize()
     
+    @Published var showingInfoAlert = false
     @Published var selectedTab: TabItem = .home
     @Published var previouslySelectedTab: TabItem = .home
     

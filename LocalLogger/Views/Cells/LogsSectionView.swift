@@ -43,6 +43,12 @@ struct LogsSectionView: View {
     }
 }
 
+extension Sequence {
+    func enumeratedArray() -> [(offset: Int, element: Element)] {
+        Array(self.enumerated())
+    }
+}
+
 #Preview {
     LogsSectionView(logs: [])
 }

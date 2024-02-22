@@ -83,6 +83,11 @@ struct MainTabBarView: View {
     }
     
     private func tabTapAction(_ tab: TabItem) {
+        if tab == .info {
+            navigationManager.showingInfoAlert = true
+            return
+        }
+        
         if tab == .history && navigationManager.selectedTab == .history {
             navigationManager.clearHistoryPath()
         }

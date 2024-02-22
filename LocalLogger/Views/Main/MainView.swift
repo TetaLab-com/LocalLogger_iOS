@@ -9,39 +9,10 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @EnvironmentObject var viewModel: LogsViewModel
-    
-    @State var showInfoAlert = false
     
     var body: some View {
         VStack {
             switch navigationManager.selectedTab {
-            case .home:
-                LogsView()
-            case .history:
-                NavigationStack(path: $navigationManager.historyPath) {
-                    LogsHistoryView().addNavigationPaths()
-                }
-            case .info:
-                previouslySelectedView
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .safeAreaInset(edge: .bottom) {
-            MainTabBarView()
-        }
-        .ignoresSafeArea(.keyboard)
-        .onChange(of: navigationManager.selectedTab) { newTab in
-            guard newTab != .info else { return }
-            navigationManager.previouslySelectedTab = navigationManager.selectedTab
-        }
-        .informationAlert($showInfoAlert)
-    }
-    
-    @ViewBuilder
-    private var previouslySelectedView: some View {
-        VStack {
-            switch navigationManager.previouslySelectedTab {
             case .home:
                 LogsView()
             case .history:
@@ -50,9 +21,10 @@ struct MainView: View {
                 EmptyView()
             }
         }
-        .onAppear {
-            showInfoAlert = true
-        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .safeAreaInset(edge: .bottom) { MainTabBarView() }
+        .ignoresSafeArea(.keyboard)
+        .informationAlert($navigationManager.showingInfoAlert)
     }
 }
 

@@ -12,7 +12,6 @@
 		442B2FC32B874C8B004BE989 /* LogDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC22B874C8B004BE989 /* LogDatabase.swift */; };
 		442B2FC52B875834004BE989 /* SessionDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC42B875834004BE989 /* SessionDB.swift */; };
 		442B2FC72B876464004BE989 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FC62B876464004BE989 /* Session.swift */; };
-		442B2FCA2B8765DB004BE989 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 442B2FC92B8765DB004BE989 /* OrderedCollections */; };
 		442B2FCC2B8768DD004BE989 /* SessionLogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FCB2B8768DD004BE989 /* SessionLogsView.swift */; };
 		442B2FCE2B8768F1004BE989 /* SessionLogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FCD2B8768F1004BE989 /* SessionLogsViewModel.swift */; };
 		442B2FD02B876965004BE989 /* LogCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B2FCF2B876965004BE989 /* LogCellView.swift */; };
@@ -96,7 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				442B2FCA2B8765DB004BE989 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +324,6 @@
 			);
 			name = LocalLogger;
 			packageProductDependencies = (
-				442B2FC92B8765DB004BE989 /* OrderedCollections */,
 			);
 			productName = LocalLogger;
 			productReference = 9CB2F0442B3DF09F00FAA215 /* LocalLogger.app */;
@@ -357,7 +354,6 @@
 			);
 			mainGroup = 9CB2F03B2B3DF09F00FAA215;
 			packageReferences = (
-				442B2FC82B8765DB004BE989 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 9CB2F0452B3DF09F00FAA215 /* Products */;
 			projectDirPath = "";
@@ -630,25 +626,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		442B2FC82B8765DB004BE989 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-collections.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		442B2FC92B8765DB004BE989 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 442B2FC82B8765DB004BE989 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		442B2FBB2B874ACA004BE989 /* LogDB.xcdatamodeld */ = {
