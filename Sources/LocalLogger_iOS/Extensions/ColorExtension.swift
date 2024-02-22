@@ -12,4 +12,9 @@ extension Color {
         "EmptyBackgroundDark",
         bundle: Bundle.module
     )
+    
+    static let purpleBackground = Color(
+        "purpleBackground",
+        bundle: Bundle.module
+    )
 }

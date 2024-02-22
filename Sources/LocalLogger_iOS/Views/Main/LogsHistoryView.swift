@@ -18,7 +18,7 @@ struct LogsHistoryView: View {
                 header
                 logsSection
             }
-            //.background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
+            .background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
             .ignoresSafeArea(.container, edges: .top)
             .safeAreaInset(edge: .bottom) {
                 Frame(height: 60)

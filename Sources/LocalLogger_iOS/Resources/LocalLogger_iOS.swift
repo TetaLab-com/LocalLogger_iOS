@@ -5,6 +5,7 @@ import SwiftUI
 
 public class LocalLogger {
     private static let viewModel = LogsViewModel()
+    private static let navigation = NavigationManager()
     
     public static func startSession() {
         LogDatabase.shared.startSession()
@@ -17,8 +18,9 @@ public class LocalLogger {
         }
         
         presentedVC.presentSwiftUIView {
-            LogsView()
+            LogsHistoryView()
                 .environmentObject(viewModel)
+                .environmentObject(navigation)
         }
     }
     
