@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "LocalLogger_iOS",
+    name: "LocalLogger",
     platforms: [
         .iOS(.v16),
         .macOS(.v13)
@@ -12,7 +12,7 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "LocalLogger_iOS",
+            name: "LocalLogger",
             targets: ["LocalLogger_iOS"]),
     ],
     targets: [
