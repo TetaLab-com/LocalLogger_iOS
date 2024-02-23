@@ -18,7 +18,7 @@ enum Level: String, CaseIterable, Codable, Hashable {
     var levelPrefix: String {
         switch self {
         case .info: return "I: "
-        case .warning: return "W: "
+        case .warning: return "D: "
         case .error: return "E: "
         case .inMessage: return "<--: "
         case .outMessage: return "-->: "
