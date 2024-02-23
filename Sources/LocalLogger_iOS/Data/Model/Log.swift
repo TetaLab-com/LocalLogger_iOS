@@ -23,7 +23,7 @@ struct Log: Hashable, Codable {
     }
 
     func getUserMessage() -> String {
-        var finalMessage = ""
+        var finalMessage = "\(level.rawValue):"
         
         if let className = prepareClassName() {
             finalMessage += "[\(className)]"
@@ -33,11 +33,7 @@ struct Log: Hashable, Codable {
             finalMessage += "[\(methodName)]"
         }
         
-        if finalMessage.isEmpty {
-            return message
-        } else {
-            return finalMessage + " \(message)"
-        }
+        return finalMessage + " \(message)"
     }
 
     func toString() -> String {

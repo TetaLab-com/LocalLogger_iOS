@@ -14,14 +14,15 @@ struct LogCellView: View {
     let index: Int
     
     var body: some View {
-        HStack {
+        HStack(spacing: 24) {
             Text(log.dateTime.logDateFormat())
                 .foregroundStyle(colorScheme == .light ? Color.textGray : Color.white)
+                .fixedSize(horizontal: false, vertical: true)
             
-            Spacer(minLength: 0)
-            
-            Text(log.level.getLevelPrefix() + log.message)
+            Text(log.getUserMessage())
                 .foregroundStyle(log.level.getColor())
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity)
         .padding(10)
