@@ -21,7 +21,6 @@ struct MainSearchBarView: View {
             xmark
         }
         .frame(height: 56)
-        .padding(.horizontal)
         .background(
             RoundedRectangle(cornerRadius: 100)
                 .fill(Color.purpleSecondary)
