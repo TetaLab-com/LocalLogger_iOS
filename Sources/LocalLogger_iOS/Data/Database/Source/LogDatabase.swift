@@ -19,7 +19,7 @@ class LogDatabase {
             let modelURL = bundle.url(forResource: "LogDB", withExtension: ".momd"),
             let model = NSManagedObjectModel(contentsOf: modelURL)
         else {
-            print("[Error][LogDatabase] persistentContainer: unable to find DB location")
+            Log.logger.error("[Error][LogDatabase] persistentContainer: unable to find DB location")
             return nil
         }
         
@@ -27,7 +27,7 @@ class LogDatabase {
         
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
-                print("[Error][LogDatabase] persistentContainer: \(error)")
+                Log.logger.error("E: [LogDatabase][persistentContainer] \(error)")
             }
         }
         
@@ -45,13 +45,14 @@ class LogDatabase {
         
         currentSession = SessionDB(context: viewContext)
         currentSession!.date = Date()
+        Log.logger.info("I: [LogDatabase][startSession] session started")
         
         saveContext()
     }
     
     public func saveLog(_ log: Log) {
         guard let viewContext, let currentSession else {
-            print("[Info][LogDatabase] tried to save log, but session isn't started")
+            Log.logger.warning("D: [LogDatabase][startSession] tried to save log, but session isn't started")
             return
         }
         
@@ -63,7 +64,7 @@ class LogDatabase {
     
     public func saveLogs(_ logs: [Log]) {
         guard let viewContext, let currentSession else {
-            print("[Info][LogDatabase] tried to save logs, but session isn't started")
+            Log.logger.warning("D: [LogDatabase][startSession] tried to save logs, but session isn't started")
             return
         }
         
@@ -85,7 +86,7 @@ class LogDatabase {
             let items = try viewContext.fetch(request)
             return items
         } catch {
-            print("[Error][LogDatabase] fetchLogs: \(error)")
+            Log.logger.error("E: [LogDatabase][fetchLogs] \(error)")
             return []
         }
     }
@@ -102,7 +103,7 @@ class LogDatabase {
             let items = try viewContext.fetch(request)
             return items
         } catch {
-            print("[Error][LogDatabase] fetchSessions: \(error)")
+            Log.logger.error("E: [LogDatabase][fetchSessions] \(error)")
             return []
         }
     }
@@ -115,7 +116,7 @@ class LogDatabase {
         do {
             try viewContext.save()
         } catch {
-            print("[Error][LogDatabase] saveContext: \(error)")
+            Log.logger.error("E: [LogDatabase][saveContext] \(error)")
         }
     }
 }

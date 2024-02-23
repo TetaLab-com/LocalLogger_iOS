@@ -9,7 +9,7 @@ import Foundation
 import os
 
 struct Log: Hashable, Codable {
-    static private let logger = Logger(
+    static internal let logger = Logger(
         subsystem: Bundle.module.bundleIdentifier!,
         category: "LocalLoggerIOS"
     )
