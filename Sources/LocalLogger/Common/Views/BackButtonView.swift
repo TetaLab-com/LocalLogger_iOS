@@ -13,7 +13,7 @@ struct BackButton: View {
     
     var body: some View {
         Button(action: action) {
-            Image(systemName: isClose ? "chevron.bottom" : "chevron.left")
+            Image(systemName: isClose ? "chevron.down" : "chevron.left")
                 .resizable()
                 .scaledToFit()
                 .fontWeight(.semibold)
