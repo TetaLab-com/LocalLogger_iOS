@@ -68,3 +68,18 @@ struct ScreenUtils {
     static var isVerySmallDisplay: Bool { height < 700 }
     static var isSmallDisplay: Bool { height < 815 }
 }
+
+extension UIViewController {
+    func presentSwiftUIView<Content: View>(@ViewBuilder _ switfUIView: () -> Content) {
+        let vc = UIHostingController(rootView: switfUIView())
+
+        let swiftuiView = vc.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+        
+        present(vc, animated: true)
+    }
+    
+    static func swiftUIViewController<Content: View>(_ content: Content) -> UIViewController {
+        UIHostingController(rootView: content)
+    }
+}
