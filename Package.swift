@@ -13,19 +13,19 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "LocalLogger",
-            targets: ["LocalLogger_iOS"]),
+            targets: ["LocalLogger"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "LocalLogger_iOS",
+            name: "LocalLogger",
             resources: [
                 .process("Resources/Assets.xcassets")
             ]
         ),
         .testTarget(
             name: "LocalLogger_iOSTests",
-            dependencies: ["LocalLogger_iOS"]),
+            dependencies: ["LocalLogger"]),
     ]
 )
