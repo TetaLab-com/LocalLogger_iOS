@@ -14,7 +14,7 @@ struct LogCellView: View {
     let index: Int
     
     var body: some View {
-        HStack(spacing: 24) {
+        HStack(spacing: 12) {
             Text(log.dateTime.logDateFormat())
                 .foregroundStyle(colorScheme == .light ? Color.textGray : Color.white)
                 .fixedSize(horizontal: false, vertical: true)
@@ -25,10 +25,10 @@ struct LogCellView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity)
-        .padding(8)
-        .padding(.horizontal, 20)
+        .padding(.vertical, 8)
+        .padding(.horizontal)
         .background(index % 2 == 1 ? Color.purpleBackground : Color.purpleSecondary)
-        .font(.roboto400, size: 16)
+        .font(.roboto400, size: 14)
     }
 }
 
