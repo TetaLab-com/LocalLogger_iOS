@@ -20,15 +20,15 @@ struct LogCellView: View {
                 .fixedSize(horizontal: false, vertical: true)
             
             Text(log.getUserMessage())
-                .foregroundStyle(log.level.getColor())
+                .foregroundStyle(log.level.foregroundColor)
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity)
-        .padding(10)
+        .padding(8)
         .padding(.horizontal, 20)
         .background(index % 2 == 1 ? Color.purpleBackground : Color.purpleSecondary)
-        .font(.roboto400, size: 20)
+        .font(.roboto400, size: 16)
     }
 }
 

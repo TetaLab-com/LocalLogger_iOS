@@ -6,8 +6,14 @@
 //
 
 import Foundation
+import os
 
 struct Log: Hashable, Codable {
+    static private let logger = Logger(
+        subsystem: Bundle.module.bundleIdentifier!,
+        category: "LocalLoggerIOS"
+    )
+    
     var dateTime: Date
     var message: String
     var level: Level = .warning
@@ -23,7 +29,7 @@ struct Log: Hashable, Codable {
     }
 
     func getUserMessage() -> String {
-        var finalMessage = "\(level.rawValue):"
+        var finalMessage = "\(level.levelPrefix): "
         
         if let className = prepareClassName() {
             finalMessage += "[\(className)]"
@@ -37,11 +43,23 @@ struct Log: Hashable, Codable {
     }
 
     func toString() -> String {
-        return "\(dateTime) \(level.getLevelPrefix()) \(getUserMessage())"
+        return "\(dateTime) \(level.levelPrefix) \(getUserMessage())"
     }
     
     func searchableText() -> String {
-        dateTime.logDateFormat() + level.getLevelPrefix() + message
+        dateTime.logDateFormat() + level.levelPrefix + message
+    }
+    
+    func printLog() {
+        let message = getUserMessage()
+        
+        switch level {
+        case .info: Self.logger.info("\(message)")
+        case .warning: Self.logger.warning("\(message)")
+        case .error: Self.logger.error("\(message)")
+        case .inMessage: Self.logger.info("\(message)")
+        case .outMessage: Self.logger.info("\(message)")
+        }
     }
     
     private func prepareMethodName() -> String? {
@@ -96,7 +114,7 @@ extension Array where Element == Log {
 extension Log {
     func getShareString() -> String {
         let date = dateTime.logDateFormat()
-        let log = level.getLevelPrefix() + message
+        let log = level.levelPrefix + message
         
         return date + " " + log
     }

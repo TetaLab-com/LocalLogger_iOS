@@ -19,7 +19,7 @@ class LogDataSource : ObservableObject {
             
             self.logs.append(log)
             LogDatabase.shared.saveLog(log)
-            print(log.getUserMessage())
+            log.printLog()
         }
     }
 

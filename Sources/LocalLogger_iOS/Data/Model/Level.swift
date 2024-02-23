@@ -15,17 +15,17 @@ enum Level: String, CaseIterable, Codable, Hashable {
     case inMessage = "IN"//used for messages received at Mobile phone
     case outMessage = "OUT"//used for messages sent from Mobile phone
 
-    func getLevelPrefix() -> String {
+    var levelPrefix: String {
         switch self {
-        case .info: return "I: "
-        case .warning: return "D: "
-        case .error: return "E: "
-        case .inMessage: return "<--: "
-        case .outMessage: return "-->: "
+        case .info: "I: "
+        case .warning: "D: "
+        case .error: "E: "
+        case .inMessage: "<--: "
+        case .outMessage: "-->: "
         }
     }
     
-    func getColor() -> Color {
+    var foregroundColor: Color {
         switch self {
         case .info: return .infoMessage
         case .warning: return .warningMessage
