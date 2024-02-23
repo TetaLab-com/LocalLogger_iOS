@@ -1,10 +1,12 @@
 # LocalLogger iOS
-### This library can be used to collect, display, and share developer logs on client devices.
+## This library can be used to collect, display, and share developer logs on client devices.
 
-## Swift Package Manager (SPM)
+## Installation
+### Swift Package Manager (SPM)
 > Add https://github.com/TetaLab-com/LocalLogger_iOS to your package dependencies.
 The application stores logs and sessions in a local db data.
 
+## Usage
 ### Step 1: Import LocalLogger
 To start using the library, you need to import it using
 > import LocalLogger
@@ -12,15 +14,14 @@ To start using the library, you need to import it using
 ### Step 2: Create new log sessions
 It's required to create a session instance, so all logs will be linked to a specific session.
 > LocalLogger.startSession()
-#### This is a suspend function.
 
 ### Step 3: Add new logs.
 There are a few types of logs that you can track:
-> Info - used to track general information
-> Warning - used to track developer warning
-> Error - used to track error cases
-> InMessage - used for messages received on Mobile phone
-> OutMessage - used for messages sent from Mobile phone
+**Info** - used to track general information
+**Warning** - used to track developer warning
+**Error** - used to track error cases
+**InMessage** - used for messages received on Mobile phone
+**OutMessage** - used for messages sent from Mobile phone
 
 **LocalLogger** - is a main class to collect and add logs.
 It has several method calls to add logs into the system.
