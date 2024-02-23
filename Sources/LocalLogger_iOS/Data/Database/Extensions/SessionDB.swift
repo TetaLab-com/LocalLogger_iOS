@@ -39,6 +39,6 @@ extension SessionDB {
 
 extension NSOrderedSet {
     func toArray<T>(_ type: T.Type) -> [T] {
-        map { $0 as! T }
+        compactMap { $0 as? T }
     }
 }

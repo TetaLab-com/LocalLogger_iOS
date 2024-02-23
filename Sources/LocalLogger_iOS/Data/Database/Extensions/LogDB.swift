@@ -10,16 +10,16 @@ import CoreData
 
 extension Sequence where Element == Log {
     @discardableResult
-    func toLogsDB() -> [LogDB] {
-        map { $0.toLogDB() }
+    func toLogsDB(context: NSManagedObjectContext) -> [LogDB] {
+        map { $0.toLogDB(context: context) }
     }
 }
 
 extension Log {
     @discardableResult
-    func toLogDB() -> LogDB {
+    func toLogDB(context: NSManagedObjectContext) -> LogDB {
         LogDB(
-            context: LogDatabase.shared.viewContext,
+            context: context,
             log: self
         )
     }
@@ -27,7 +27,7 @@ extension Log {
 
 extension Sequence where Element == LogDB {
     func toLogs() -> [Log] {
-        map { $0.toLog() }
+        compactMap { $0.toLog() }
     }
 }
 
@@ -44,13 +44,23 @@ extension LogDB {
     }
     
     @discardableResult
-    func toLog() -> Log {
-        Log(
-            dateTime: date!,
-            message: message!,
-            level: Level(rawValue: level!)!,
-            className: logClassName!,
-            methodName: logMethodName!
+    func toLog() -> Log? {
+        guard
+            let date,
+            let message,
+            let level,
+            let logClassName,
+            let logMethodName
+        else {
+            return nil
+        }
+        
+        return Log(
+            dateTime: date,
+            message: message,
+            level: Level(rawValue: level) ?? .info,
+            className: logClassName,
+            methodName: logMethodName
         )
     }
 }

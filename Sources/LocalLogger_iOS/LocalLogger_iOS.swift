@@ -13,7 +13,7 @@ public class LocalLogger {
     
     public static func presentCurrentLogs() {
         guard let presentedVC = UIApplication.shared.keyWindowPresentedController else {
-            print("[Error][LocalLogger] present: unable to find key window presented controller")
+            print("[Error][LocalLogger] presentCurrentLogs: unable to find key window presented controller")
             return
         }
         
@@ -26,7 +26,7 @@ public class LocalLogger {
     
     public static func presentLogs() {
         guard let presentedVC = UIApplication.shared.keyWindowPresentedController else {
-            print("[Error][LocalLogger] present: unable to find key window presented controller")
+            print("[Error][LocalLogger] presentLogs: unable to find key window presented controller")
             return
         }
         

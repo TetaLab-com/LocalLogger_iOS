@@ -23,7 +23,7 @@ class LogDataSource : ObservableObject {
         }
     }
 
-    func w(className: String, methodName: String, message: String) {
+    internal func w(className: String, methodName: String, message: String) {
        addLog(Log(dateTime: getDate(),
                   message: message,
                   level: .warning,
@@ -31,11 +31,11 @@ class LogDataSource : ObservableObject {
                   methodName: methodName))
     }
 
-    func w(_ message: String) {
+    internal func w(_ message: String) {
         w(className: "", methodName: "", message: message)
     }
 
-    func i(className: String, methodName: String, message: String) {
+    internal func i(className: String, methodName: String, message: String) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .info,
@@ -43,11 +43,11 @@ class LogDataSource : ObservableObject {
                    methodName: methodName))
     }
 
-    func i(_ message: String) {
+    internal func i(_ message: String) {
         i(className: "", methodName: "", message: message)
     }
     
-    func e(className: String, methodName: String, message: String) {
+    internal func e(className: String, methodName: String, message: String) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .error,
@@ -55,11 +55,11 @@ class LogDataSource : ObservableObject {
                    methodName: methodName))
     }
 
-    func e(_ message: String) {
+    internal func e(_ message: String) {
         e(className: "", methodName: "", message: message)
     }
     
-    func inMessage(className: String, methodName: String, message: String) {
+    internal func inMessage(className: String, methodName: String, message: String) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .inMessage,
@@ -67,11 +67,11 @@ class LogDataSource : ObservableObject {
                    methodName: methodName))
     }
 
-    func inMessage(_ message: String) {
+    internal func inMessage(_ message: String) {
         inMessage(className: "", methodName: "", message: message)
     }
     
-    func outMessage(className: String, methodName: String, message: String) {
+    internal func outMessage(className: String, methodName: String, message: String) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .outMessage,
@@ -79,12 +79,11 @@ class LogDataSource : ObservableObject {
                    methodName: methodName))
     }
 
-    func outMessage(_ message: String) {
+    internal func outMessage(_ message: String) {
         outMessage(className: "", methodName: "", message: message)
     }
     
-    public func getDate() -> Date {
+    private func getDate() -> Date {
         return Date()
     }
-    
 }

@@ -13,6 +13,7 @@ struct InformationAlertView: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(contentOverlay)
+            .padding(showAlert ? -2 : 0)
             .blur(radius: showAlert ? 1 : 0)
             .overlay(alert)
             .animation(.spring(), value: showAlert)
