@@ -28,8 +28,8 @@ struct Log: Hashable, Codable {
         self.methodName = methodName
     }
 
-    func getUserMessage() -> String {
-        var finalMessage = "\(level.levelPrefix): "
+    func getUserMessage(prefix: Bool = true) -> String {
+        var finalMessage = prefix ? "\(level.levelPrefix): " : ""
         
         if let className = prepareClassName() {
             finalMessage += "[\(className)]"
@@ -51,12 +51,12 @@ struct Log: Hashable, Codable {
     }
     
     func printLog() {
-        let message = getUserMessage()
+        let message = getUserMessage(prefix: false)
         
         switch level {
         case .info: Self.logger.info("\(message)")
         case .warning: Self.logger.warning("\(message)")
-        case .error: Self.logger.error("\(message)")
+        case .error: Self.logger.critical("\(message)")
         case .inMessage: Self.logger.info("\(message)")
         case .outMessage: Self.logger.info("\(message)")
         }

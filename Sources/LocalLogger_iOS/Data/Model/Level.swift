@@ -17,11 +17,11 @@ enum Level: String, CaseIterable, Codable, Hashable {
 
     var levelPrefix: String {
         switch self {
-        case .info: "I: "
-        case .warning: "D: "
-        case .error: "E: "
-        case .inMessage: "<--: "
-        case .outMessage: "-->: "
+        case .info: return "I: "
+        case .warning: return "W: "
+        case .error: return "E: "
+        case .inMessage: return "<--: "
+        case .outMessage: return "-->: "
         }
     }
     
