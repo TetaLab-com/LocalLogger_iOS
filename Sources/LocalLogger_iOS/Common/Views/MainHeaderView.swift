@@ -29,7 +29,6 @@ struct MainHeaderView: View {
         .padding(.horizontal)
         .padding(.vertical, 20)
         .background(colorScheme == .dark ? Color.mainBackgroundDark : Color.purpleMain)
-        .frame(height: 120)
     }
     
     @ViewBuilder
