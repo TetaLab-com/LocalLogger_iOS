@@ -53,11 +53,11 @@ You can also add optional **class name** and **method name** for additional debu
 > LocalLogger.outMessage(message: String)
 
 ### Step 4: View collected messages
-The library includes **LogsView** that can display collected messages for the active session, a list of previous sessions, and session details. The app can open it by executing the next command.
+The library includes method that can display collected messages for the active session, a list of previous sessions, and session details. The app can open it by executing the next command.
 
 > LocalLogger.presentLogs()
 
-The library also includes **CurrentLogsView**. It's a View that can display current session logs.
+The library also includes another method that can display current session logs.
 
 > LocalLogger.presentCurrentLogs()
 
