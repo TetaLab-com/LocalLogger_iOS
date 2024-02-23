@@ -23,7 +23,11 @@ class LogDataSource : ObservableObject {
         }
     }
 
-    internal func w(className: String, methodName: String, message: String) {
+    internal func w(
+        className: String = #file,
+        methodName: String = #function,
+        message: String
+    ) {
        addLog(Log(dateTime: getDate(),
                   message: message,
                   level: .warning,
@@ -31,56 +35,52 @@ class LogDataSource : ObservableObject {
                   methodName: methodName))
     }
 
-    internal func w(_ message: String) {
-        w(className: "", methodName: "", message: message)
-    }
-
-    internal func i(className: String, methodName: String, message: String) {
+    internal func i(
+        className: String = #file,
+        methodName: String = #function,
+        message: String
+    ) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .info,
                    className: className,
                    methodName: methodName))
     }
-
-    internal func i(_ message: String) {
-        i(className: "", methodName: "", message: message)
-    }
     
-    internal func e(className: String, methodName: String, message: String) {
+    internal func e(
+        className: String = #file,
+        methodName: String = #function,
+        message: String
+    ) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .error,
                    className: className,
                    methodName: methodName))
     }
-
-    internal func e(_ message: String) {
-        e(className: "", methodName: "", message: message)
-    }
     
-    internal func inMessage(className: String, methodName: String, message: String) {
+    internal func inMessage(
+        className: String = #file,
+        methodName: String = #function,
+        message: String
+    ) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .inMessage,
                    className: className,
                    methodName: methodName))
     }
-
-    internal func inMessage(_ message: String) {
-        inMessage(className: "", methodName: "", message: message)
-    }
     
-    internal func outMessage(className: String, methodName: String, message: String) {
+    internal func outMessage(
+        className: String = #file,
+        methodName: String = #function,
+        message: String
+    ) {
         addLog(Log(dateTime: getDate(),
                    message: message,
                    level: .outMessage,
                    className: className,
                    methodName: methodName))
-    }
-
-    internal func outMessage(_ message: String) {
-        outMessage(className: "", methodName: "", message: message)
     }
     
     private func getDate() -> Date {
