@@ -26,13 +26,12 @@ enum Level: String, CaseIterable, Codable, Hashable {
     }
     
     func getColor() -> Color {
-        return Color.red
-//        switch self {
-//        case .info: return .infoMessage
-//        case .warning: return .warningMessage
-//        case .error: return .errorMessage
-//        case .inMessage: return .inMessage
-//        case .outMessage: return .outMessage
-//        }        
+        switch self {
+        case .info: return .infoMessage
+        case .warning: return .warningMessage
+        case .error: return .errorMessage
+        case .inMessage: return .inMessage
+        case .outMessage: return .outMessage
+        }        
     }
 }
