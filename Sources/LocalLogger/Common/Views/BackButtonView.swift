@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct BackButton: View {
+    let isClose: Bool
     let action: () -> ()
     
     var body: some View {
         Button(action: action) {
-            Image(systemName: "chevron.left")
+            Image(systemName: isClose ? "chevron.bottom" : "chevron.left")
                 .resizable()
                 .scaledToFit()
                 .fontWeight(.semibold)
@@ -22,5 +23,5 @@ struct BackButton: View {
 }
 
 #Preview {
-    BackButton {}
+    BackButton(isClose: false) {}
 }

@@ -13,6 +13,7 @@ struct MainHeaderView: View {
     
     let titleText: String
     let showTrailingItems: Bool
+    var isClose: Bool = true
     var showBackButton: Bool = true
     var level: Binding<Level?>? = nil
     let shareItem: String?
@@ -34,8 +35,11 @@ struct MainHeaderView: View {
     @ViewBuilder
     private var backButton: some View {
         if showBackButton {
-            BackButton(action: dismiss.callAsFunction)
-                .foregroundStyle(Color.white)
+            BackButton(
+                isClose: isClose,
+                action: dismiss.callAsFunction
+            )
+            .foregroundStyle(Color.white)
         }
     }
     
