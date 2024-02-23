@@ -16,7 +16,7 @@ struct BackButton: View {
             Image(systemName: isClose ? "xmark" : "chevron.left")
                 .resizable()
                 .scaledToFit()
-                .fontWeight(.bold)
+                .fontWeight(.semibold)
                 .frame(width: 16, height: 16)
         }
     }
