@@ -52,7 +52,7 @@ class LogDatabase {
     
     public func saveLog(_ log: Log) {
         guard let viewContext, let currentSession else {
-            Log.logger.warning("D: [LogDatabase][startSession] tried to save log, but session isn't started")
+            Log.logger.warning("D: [LogDatabase][saveLog] tried to save log, but session isn't started")
             return
         }
         
@@ -64,7 +64,7 @@ class LogDatabase {
     
     public func saveLogs(_ logs: [Log]) {
         guard let viewContext, let currentSession else {
-            Log.logger.warning("D: [LogDatabase][startSession] tried to save logs, but session isn't started")
+            Log.logger.warning("D: [LogDatabase][saveLog] tried to save logs, but session isn't started")
             return
         }
         
