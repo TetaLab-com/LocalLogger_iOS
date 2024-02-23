@@ -24,6 +24,7 @@ struct LogsHistoryView: View {
                 Frame(height: 60)
             }
             .addNavigationPaths()
+            .onAppear(perform: viewModel.updateSessions)
         }
     }
     
@@ -42,7 +43,6 @@ struct LogsHistoryView: View {
                 
                 ForEach(sessions, id: \.element.id) { index, session in
                     Button {
-                        viewModel.updateSessions()
                         navigation.appendHistoryPath(SessionLogsPath(session: session))
                     } label: {
                         SessionCellView(
