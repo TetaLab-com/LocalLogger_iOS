@@ -8,27 +8,33 @@
 import Foundation
 
 extension Date {
-    func toString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "mm:ss.SSSS"
-        dateFormatter.locale = Locale(identifier: "en_US")
+    func sessionDateFormat() -> String {
+        let dateFormatter = DateFormatter.getFormatter(with: "dd.MM.yyyy HH:mm:ss")
         
         return dateFormatter.string(from: self)
     }
     
-    func toStringDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        dateFormatter.locale = Locale(identifier: "en_US")
+    func logDateFormat() -> String {
+        let dateFormatter = DateFormatter.getFormatter(with: "mm:ss.SSSS")
         
         return dateFormatter.string(from: self)
     }
+}
+
+extension DateFormatter {
+    static var cachedFormatters = [String: DateFormatter]()
     
-    func toStringTime() -> String {
+    static func getFormatter(with format: String) -> DateFormatter {
+        if let formatter = cachedFormatters[format] {
+            return formatter
+        }
+        
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = format
         dateFormatter.locale = Locale(identifier: "en_US")
         
-        return dateFormatter.string(from: self)
+        cachedFormatters[format] = dateFormatter
+        
+        return dateFormatter
     }
 }

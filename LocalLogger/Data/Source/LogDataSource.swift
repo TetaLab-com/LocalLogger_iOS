@@ -10,14 +10,10 @@ import SwiftUI
 
 class LogDataSource : ObservableObject {
     static let shared = LogDataSource()
-    let dateFormatter = DateFormatter()
     
-    @Published public var logs = [Log]()
+    @Published private(set) var logs = [Log]()
     
-    init () {
-        dateFormatter.dateFormat = "mm:ss.SSSS"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        
+    init() {
         w("message1")
         i("message2")
         e("message3")
@@ -28,16 +24,17 @@ class LogDataSource : ObservableObject {
     private func addLog(_ log: Log) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            logs.insert(log, at: logs.count)
-            print("Log", "[${log.className}] [${log.methodName}] ${log.message}")
-            //        notifyListUpdates()
+            
+            self.logs.append(log)
+            LogDatabase.shared.saveLog(log)
+            print("Log", "[\(log.className)] [\(log.methodName)] \(log.message)")
         }
     }
 
     func w(className: String, methodName: String, message: String) {
-       addLog(Log(dateTime: getTimeString(),
+       addLog(Log(dateTime: getDate(),
                   message: message,
-                  level: Level.WARNING,
+                  level: .warning,
                   className: className,
                   methodName: methodName))
     }
@@ -47,9 +44,9 @@ class LogDataSource : ObservableObject {
     }
 
     func i(className: String, methodName: String, message: String) {
-        addLog(Log(dateTime: getTimeString(),
+        addLog(Log(dateTime: getDate(),
                    message: message,
-                   level: Level.INFO,
+                   level: .info,
                    className: className,
                    methodName: methodName))
     }
@@ -59,9 +56,9 @@ class LogDataSource : ObservableObject {
     }
     
     func e(className: String, methodName: String, message: String) {
-        addLog(Log(dateTime: getTimeString(),
+        addLog(Log(dateTime: getDate(),
                    message: message,
-                   level: Level.ERROR,
+                   level: .error,
                    className: className,
                    methodName: methodName))
     }
@@ -71,9 +68,9 @@ class LogDataSource : ObservableObject {
     }
     
     func inMessage(className: String, methodName: String, message: String) {
-        addLog(Log(dateTime: getTimeString(),
+        addLog(Log(dateTime: getDate(),
                    message: message,
-                   level: Level.IN_MESSAGE,
+                   level: Level.inMessage,
                    className: className,
                    methodName: methodName))
     }
@@ -83,9 +80,9 @@ class LogDataSource : ObservableObject {
     }
     
     func outMessage(className: String, methodName: String, message: String) {
-        addLog(Log(dateTime: getTimeString(),
+        addLog(Log(dateTime: getDate(),
                    message: message,
-                   level: Level.OUT_MESSAGE,
+                   level: Level.outMessage,
                    className: className,
                    methodName: methodName))
     }
@@ -94,10 +91,8 @@ class LogDataSource : ObservableObject {
         outMessage(className: "", methodName: "", message: message)
     }
     
-    public func getTimeString() -> Date {
-        let date = Date()
-//        return dateFormatter.string(from: date)
-        return date
+    public func getDate() -> Date {
+        return Date()
     }
     
 }

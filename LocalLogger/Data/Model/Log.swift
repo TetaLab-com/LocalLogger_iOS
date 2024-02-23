@@ -7,19 +7,10 @@
 
 import Foundation
 
-struct Log: Hashable {
-    
-    static func == (lhs: Log, rhs: Log) -> Bool {
-        return lhs.dateTime == rhs.dateTime
-        && lhs.message == rhs.message
-        && lhs.level == rhs.level
-        && lhs.className == rhs.className
-        && lhs.methodName == rhs.methodName
-    }
-    
+struct Log: Hashable, Codable {
     var dateTime: Date
     var message: String
-    var level: Level = Level.WARNING
+    var level: Level = .warning
     var className: String = ""
     var methodName: String = ""
     
@@ -49,5 +40,41 @@ struct Log: Hashable {
 
     func toString() -> String {
         return "\(dateTime) \(level.getLevelPrefix()) \(getUserMessage())"
+    }
+    
+    func searchableText() -> String {
+        dateTime.logDateFormat() + level.getLevelPrefix() + message
+    }
+}
+
+extension Array where Element == Log {
+    func getShareString() -> String { self
+        .map { $0.getShareString() }
+        .joined(separator: "\n")
+    }
+    
+    func filter(level: Level?, searchText: String) -> [Log] {
+        if level == nil && searchText.isEmpty {
+            return self
+        }
+        
+        return filter { log in
+            let logSearchable = log.searchableText()
+            
+            // Фільтрація за текстом пошуку та вибраним рівнем
+            let searchTextCondition = searchText.isEmpty || logSearchable.contains(searchText)
+            let selectedLevelCondition = level == nil || log.level == level
+
+            return searchTextCondition && selectedLevelCondition
+        }
+    }
+}
+
+extension Log {
+    func getShareString() -> String {
+        let date = dateTime.logDateFormat()
+        let log = level.getLevelPrefix() + message
+        
+        return date + " " + log
     }
 }

@@ -32,7 +32,6 @@ struct InformationView: View {
     private var xmarkButton: some View {
         Button {
             showAlert = false
-            navigationManager.selectedTab = navigationManager.previouslySelectedTab
         } label: {
             Image(systemName: "xmark")
                 .frame(width: 24, height: 24)
