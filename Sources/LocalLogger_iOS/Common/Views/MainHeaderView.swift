@@ -51,7 +51,10 @@ struct MainHeaderView: View {
             Button {
                 level?.wrappedValue = nil
             } label: {
-                Label("All", systemImage: level?.wrappedValue == nil ? "checkmark" : "")
+                CustomLabel(
+                    label: "All",
+                    image: level?.wrappedValue == nil ? "checkmark" : nil
+                )
             }
             
             Divider()
@@ -63,7 +66,10 @@ struct MainHeaderView: View {
                 Button {
                     self.level?.wrappedValue = level
                 } label: {
-                    Label(level.rawValue, systemImage: isSelected ? "checkmark" : "")
+                    CustomLabel(
+                        label: level.rawValue,
+                        image: isSelected ? "checkmark" : nil
+                    )
                 }
             }
         } label: {
@@ -92,6 +98,19 @@ struct MainHeaderView: View {
                     .foregroundStyle(Color.white)
                     .frame(width: 24, height: 24)
             }
+        }
+    }
+}
+
+fileprivate struct CustomLabel: View {
+    let label: String
+    let image: String?
+    
+    var body: some View {
+        if let image {
+            Label(label, systemImage: image)
+        } else {
+            Text(label)
         }
     }
 }

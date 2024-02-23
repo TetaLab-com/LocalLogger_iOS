@@ -51,7 +51,7 @@ struct Log: Hashable, Codable {
     }
     
     func printLog() {
-        let message = getUserMessage(prefix: false)
+        let message = getUserMessage(prefix: true)
         
         switch level {
         case .info: Self.logger.info("\(message)")
