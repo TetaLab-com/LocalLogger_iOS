@@ -73,7 +73,6 @@ struct InformationView: View {
     private var okButton: some View {
         Button {
             showAlert = false
-            navigationManager.selectedTab = navigationManager.previouslySelectedTab
         } label: {
             Text("Ok")
                 .font(.roboto700, size: 16)

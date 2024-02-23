@@ -28,7 +28,6 @@ struct MainHeaderView: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 20)
-        .padding(.top, ScreenUtils.statusBarHeight)
         .background(colorScheme == .dark ? Color.mainBackgroundDark : Color.purpleMain)
         .frame(height: 120)
     }

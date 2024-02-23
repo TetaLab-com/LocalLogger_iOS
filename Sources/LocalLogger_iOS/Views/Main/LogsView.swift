@@ -12,20 +12,27 @@ struct LogsView: View {
     @EnvironmentObject var viewModel: LogsViewModel
     
     var body: some View {
-        VStack(spacing: 0) {
-            MainHeaderView(
-                titleText: "Logs",
-                showTrailingItems: true,
-                level: $viewModel.selectedLevel,
-                shareItem: viewModel.filteredLogs.getShareString()
-            )
-            MainSearchBarView(searchText: $viewModel.searchText)
-                .padding()
+        VStack {
+            header
+            searchBar
             logsSection
-            Spacer()
         }
         .background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
         .ignoresSafeArea(.container, edges: .top)
+    }
+    
+    private var header: some View {
+        MainHeaderView(
+            titleText: "Logs",
+            showTrailingItems: true,
+            level: $viewModel.selectedLevel,
+            shareItem: viewModel.filteredLogs.getShareString()
+        )
+    }
+    
+    private var searchBar: some View {
+        MainSearchBarView(searchText: $viewModel.searchText)
+            .padding(.horizontal)
     }
     
     private var logsSection: some View {

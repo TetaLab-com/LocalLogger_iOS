@@ -20,7 +20,6 @@ struct SessionLogsView: View {
             searchBar
             logs
         }
-        .padding(.top, -ScreenUtils.statusBarHeight)
         .safeAreaInset(edge: .bottom) {
             Frame(height: 60)
         }

@@ -14,7 +14,7 @@ struct LogsHistoryView: View {
     
     var body: some View {
         NavigationStack(path: $navigation.historyPath) {
-            VStack(spacing: 0) {
+            VStack {
                 header
                 logsSection
             }
