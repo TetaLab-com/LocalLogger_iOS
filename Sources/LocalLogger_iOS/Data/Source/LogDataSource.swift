@@ -13,14 +13,6 @@ class LogDataSource : ObservableObject {
     
     @Published private(set) var logs = [Log]()
     
-    init() {
-        w("message1")
-        i("message2")
-        e("message3")
-        inMessage("message4")
-        outMessage("message5")
-    }
-    
     private func addLog(_ log: Log) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
