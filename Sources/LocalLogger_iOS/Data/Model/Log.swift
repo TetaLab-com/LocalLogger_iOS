@@ -29,7 +29,7 @@ struct Log: Hashable, Codable {
     }
 
     func getUserMessage(prefix: Bool = true) -> String {
-        var finalMessage = prefix ? "\(level.levelPrefix): " : ""
+        var finalMessage = prefix ? "\(level.levelPrefix)" : ""
         
         if let className = prepareClassName() {
             finalMessage += "[\(className)]"
