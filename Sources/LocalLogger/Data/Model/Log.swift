@@ -47,7 +47,9 @@ struct Log: Hashable, Codable {
     }
     
     func searchableText() -> String {
-        dateTime.logDateFormat() + level.levelPrefix + message
+        var searchableText = dateTime.logDateFormat() + level.levelPrefix + message
+        
+        return searchableText.lowercased()
     }
     
     func printLog() {
@@ -99,6 +101,7 @@ extension Array where Element == Log {
             return self
         }
         
+        let searchText = searchText.lowercased()
         return filter { log in
             let logSearchable = log.searchableText()
             
