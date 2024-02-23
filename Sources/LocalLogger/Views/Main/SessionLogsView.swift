@@ -32,7 +32,7 @@ struct SessionLogsView: View {
         MainHeaderView(
             titleText: viewModel.navigationTitle,
             showTrailingItems: true,
-            isClose: true,
+            isClose: false,
             showBackButton: true,
             level: $viewModel.selectedLevel,
             shareItem: viewModel.filteredLogs.getShareString()
