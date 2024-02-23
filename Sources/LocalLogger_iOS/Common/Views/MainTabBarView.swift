@@ -43,12 +43,12 @@ struct TabBarItemView: View {
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
-//                    .foregroundColor(isSelected ? Color.purpleButton : Color.purpleGray)
+                    .foregroundColor(isSelected ? Color.purpleButton : Color.purpleGray)
                     .frame(width: 18, height: 18)
                 
                 Text(tabItem.title)
                     .font(.roboto500, size: 12)
-//                    .foregroundColor(isSelected ? Color.purpleMain : Color.purpleGray)
+                    .foregroundColor(isSelected ? Color.purpleMain : Color.purpleGray)
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity)

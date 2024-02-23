@@ -26,14 +26,14 @@ struct SessionCellView: View {
                 Image("shareIcon", bundle: .module)
                     .resizable()
                     .renderingMode(.template)
-                    //.foregroundStyle(Color.purpleMain)
+                    .foregroundStyle(Color.purpleMain)
                     .frame(width: 24, height: 24)
             }
         }
         .frame(maxWidth: .infinity)
         .padding(10)
         .padding(.horizontal, 20)
-        //.background(index % 2 == 0 ? Color.purpleBackground : Color.purpleSecondary)
+        .background(index % 2 == 0 ? Color.purpleBackground : Color.purpleSecondary)
         .font(.roboto400, size: 20)
     }
 }

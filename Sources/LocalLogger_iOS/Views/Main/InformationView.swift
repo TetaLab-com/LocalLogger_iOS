@@ -26,7 +26,7 @@ struct InformationView: View {
                 .padding(.vertical)
         }
         .padding()
-        //.background(Color.purpleBackground)
+        .background(Color.purpleBackground)
     }
     
     private var xmarkButton: some View {
@@ -36,7 +36,7 @@ struct InformationView: View {
             Image(systemName: "xmark")
                 .frame(width: 24, height: 24)
                 .fontWeight(.semibold)
-                //.foregroundStyle(Color.purpleGray)
+                .foregroundStyle(Color.purpleGray)
         }
         .frame(maxWidth: .infinity, alignment: .trailing)
     }
@@ -82,7 +82,7 @@ struct InformationView: View {
                 .frame(height: 48)
                 .background(
                     RoundedRectangle(cornerRadius: 24)
-                        //.fill(Color.purpleButton)
+                        .fill(Color.purpleButton)
                 )
         }
     }
