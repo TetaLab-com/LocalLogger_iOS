@@ -23,18 +23,20 @@ struct Log: Hashable, Codable {
     }
 
     func getUserMessage() -> String {
-        if (!className.isEmpty) {
-            if (!methodName.isEmpty) {
-                return "[\(className)] [\(methodName)] \(message)"
-            } else {
-                return "[\(className)] \(message)"
-            }
+        var finalMessage = ""
+        
+        if let className = prepareClassName() {
+            finalMessage += "[\(className)]"
+        }
+        
+        if let methodName = prepareMethodName() {
+            finalMessage += "[\(methodName)]"
+        }
+        
+        if finalMessage.isEmpty {
+            return message
         } else {
-            if (!methodName.isEmpty) {
-                return "[\(methodName)] \(message)"
-            } else {
-                return message
-            }
+            return finalMessage + " \(message)"
         }
     }
 
@@ -44,6 +46,31 @@ struct Log: Hashable, Codable {
     
     func searchableText() -> String {
         dateTime.logDateFormat() + level.getLevelPrefix() + message
+    }
+    
+    private func prepareMethodName() -> String? {
+        if methodName.isEmpty {
+            return nil
+        }
+        
+        let preparedName = methodName
+            .components(separatedBy: "(")
+            .first
+        
+        return preparedName
+    }
+    
+    private func prepareClassName() -> String? {
+        if className.isEmpty {
+            return nil
+        }
+        
+        let preparedName = className
+            .components(separatedBy: "/")
+            .last?
+            .replacingOccurrences(of: ".swift", with: "")
+        
+        return preparedName
     }
 }
 

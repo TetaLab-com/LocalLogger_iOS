@@ -38,8 +38,8 @@ public class LocalLogger {
     }
     
     public static func w(
-        className: String = "",
-        methodName: String = "",
+        className: String = #file,
+        methodName: String = #function,
         message: String
     ) {
         LogDataSource.shared.w(
@@ -50,8 +50,8 @@ public class LocalLogger {
     }
 
     public static func i(
-        className: String = "",
-        methodName: String = "",
+        className: String = #file,
+        methodName: String = #function,
         message: String
     ) {
         LogDataSource.shared.i(
@@ -62,8 +62,8 @@ public class LocalLogger {
     }
     
     public static func e(
-        className: String = "",
-        methodName: String = "",
+        className: String = #file,
+        methodName: String = #function,
         message: String
     ) {
         LogDataSource.shared.e(
@@ -74,8 +74,8 @@ public class LocalLogger {
     }
     
     public static func inMessage(
-        className: String = "",
-        methodName: String = "",
+        className: String = #file,
+        methodName: String = #function,
         message: String
     ) {
         LogDataSource.shared.inMessage(
@@ -86,8 +86,8 @@ public class LocalLogger {
     }
     
     public static func outMessage(
-        className: String = "",
-        methodName: String = "",
+        className: String = #file,
+        methodName: String = #function,
         message: String
     ) {
         LogDataSource.shared.outMessage(
