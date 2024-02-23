@@ -13,7 +13,7 @@ struct MainHeaderView: View {
     
     let titleText: String
     let showTrailingItems: Bool
-    var showBackButton: Bool = false
+    var showBackButton: Bool = true
     var level: Binding<Level?>? = nil
     let shareItem: String?
     

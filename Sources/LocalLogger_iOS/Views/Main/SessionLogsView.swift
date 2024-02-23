@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SessionLogsView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
     @StateObject private var viewModel: SessionLogsViewModel
     
     init(sessionDB: SessionDB) {
@@ -20,6 +22,7 @@ struct SessionLogsView: View {
             searchBar
             logs
         }
+        .background(colorScheme == .light ? Color.purpleBackground : Color.emptyBackgroundDark)
         .safeAreaInset(edge: .bottom) {
             Frame(height: 60)
         }
