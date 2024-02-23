@@ -29,6 +29,10 @@ class LogsViewModel : ObservableObject {
         logsManager.$logs
             .assign(to: &$logs)
         
+        updateSessions()
+    }
+    
+    public func updateSessions() {
         sessions = LogDatabase.shared.fetchSessions()
     }
     
