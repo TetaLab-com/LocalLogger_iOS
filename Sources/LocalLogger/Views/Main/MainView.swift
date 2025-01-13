@@ -16,7 +16,11 @@ struct MainView: View {
             case .home:
                 LogsView()
             case .history:
-                LogsHistoryView()
+                if #available(iOS 16.0, *) {
+                    LogsHistoryView()
+                } else {
+                    EmptyView()
+                }
             case .info:
                 EmptyView()
             }
