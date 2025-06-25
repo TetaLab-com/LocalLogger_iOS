@@ -47,9 +47,15 @@ struct Log: Hashable, Codable {
     }
     
     func searchableText() -> String {
-        var searchableText = dateTime.logDateFormat() + level.levelPrefix + message
+        var components: [String] = [
+            dateTime.logDateFormat(),
+            className,
+            methodName,
+            level.levelPrefix,
+            message
+        ]
         
-        return searchableText.lowercased()
+        return components.joined(separator: "").lowercased()
     }
     
     func printLog() {
